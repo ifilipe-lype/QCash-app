@@ -16,7 +16,7 @@ export default function RootTabbedNavigator() {
             tabBarOptions={{
                 showLabel: false,
                 style: {
-                    borderWidth: 0,
+                    borderTopWidth: 0,
                     backgroundColor: "transparent",
                     elevation: 0
                 }
