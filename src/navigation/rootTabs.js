@@ -3,6 +3,8 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, Text } from "react-native";
 
+import HomeScreen from "../screens/Home";
+
 
 import Colors from "../constants/colors";
 
@@ -30,7 +32,7 @@ export default function RootTabbedNavigator() {
                     )
                 }}
                 name="Home"
-                component={Home}
+                component={HomeScreen}
             />
             <Tabs.Screen
                 options={{
@@ -62,16 +64,6 @@ export default function RootTabbedNavigator() {
         </Tabs.Navigator>
     )
 };
-
-function Home() {
-    return (
-        <View>
-            <Text>
-                Hello, Home!
-            </Text>
-        </View>
-    )
-}
 
 function Transations() {
     return (
