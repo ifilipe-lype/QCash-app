@@ -20,7 +20,7 @@ export default function RootTabbedNavigator() {
                 showLabel: false,
                 style: {
                     borderTopWidth: 0,
-                    backgroundColor: "transparent",
+                    backgroundColor: "white",
                     elevation: 0
                 }
             }}
