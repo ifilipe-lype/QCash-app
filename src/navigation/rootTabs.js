@@ -1,7 +1,8 @@
 import React from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, Text, TouchableHighlight } from "react-native";
+import { View, Text } from "react-native";
+
 
 import Colors from "../constants/colors";
 
