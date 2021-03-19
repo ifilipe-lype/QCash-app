@@ -1,11 +1,25 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
-export default function Income(){
+export default function Income({ data }) {
+    const {
+        description,
+        amount
+    } = data;
+
     return (
-        <View>
-            <Text>Income here!</Text>
-        </View>
+        <TouchableOpacity style={styles.container}>
+            <View >
+                <Text>{description}</Text>
+            </View>
+            <View style={{
+                flexDirection: "row"
+            }}>
+                <Text>
+                    {amount}
+                </Text>
+            </View>
+        </TouchableOpacity>
     );
 }
