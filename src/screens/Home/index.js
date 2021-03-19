@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import styles from "./styles";
 import MonthYearPicker from "../../components/MonthYearPicker";
 
-import { monthsLabel } from "../../constants";
+import { Colors, monthsLabel } from "../../constants";
 
 
 export default function HomeScreen() {
@@ -15,19 +15,53 @@ export default function HomeScreen() {
     const [activeMonth, setActiveMonth] = useState(2);
     const [activeYear, setActiveYear] = useState(2021);
 
-    function closePicker(){
+    function closePicker() {
         setShowDatePicker(false);
     }
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={{
-                alignItems: "center"
-            }}>
+            <View style={styles.statusCard}>
+                <View style={styles.statusCardTopShadowHider}></View>
+
+                {/* Date Selector */}
                 <TouchableOpacity style={styles.datePickerBtn} onPress={() => setShowDatePicker(!showDatePicker)}>
                     <Text style={styles.datePickerBtnLabel}>{monthsLabel[activeMonth]}, {activeYear}</Text>
                     <AntDesign style={styles.datePickerBtnIcon} name="down" size={16} />
                 </TouchableOpacity>
+
+                <View style={{ width: "100%"}}>
+                    {/* Total Month Gain */}
+                    <View style={{justifyContent: "center", alignItems: "center"}}>
+                        <Text style={styles.label}>Rendimento Total</Text>
+                        <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRgbValue})`, fontSize: 22 }]}>712,890</Text>
+                    </View>
+
+                    {/* Incomes and Outcomes Totals */}
+                    <View style={styles.entriesResults}>
+                        {/* Incomes Total */}
+                        <TouchableOpacity style={styles.entryCard}>
+                            <View style={styles.entryIcon}>
+                                <AntDesign name="arrowup" size={20} color="white" />
+                            </View>
+                            <View>
+                                <Text style={styles.label}>ganhos</Text>
+                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRgbValue})` }]}>712,890</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                        {/* Outcomes Total */}
+                        <TouchableOpacity style={styles.entryCard}>
+                            <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRgbValue})`}]}>
+                                <AntDesign name="arrowdown" size={20} color="white" />
+                            </View>
+                            <View>
+                                <Text style={styles.label}>despesas</Text>
+                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRgbValue})` }]}>712,890</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </View>
 
             <MonthYearPicker

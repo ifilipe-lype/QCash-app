@@ -35,14 +35,7 @@ export default function MonthYearPicker({ showPicker, closePicker, activeMonth, 
 
                 <View style={styles.pickerContainer}>
                     {/* Year selector */}
-                    <View style={{
-                        position: "relative",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        marginHorizontal: "auto",
-                        width: "70%"
-                    }}>
+                    <View style={styles.yearSelector}>
                         <TouchableOpacity style={styles.arrowIcon} onPress={() => setSelectedYear(selectedYear - 1)} >
                             <AntDesign name="left" size={24} color="rgba(0,0,0, .35)" />
                         </TouchableOpacity>
@@ -53,13 +46,7 @@ export default function MonthYearPicker({ showPicker, closePicker, activeMonth, 
                     </View>
 
                     {/* Month selector */}
-                    <View style={{
-                        flexDirection: "row",
-                        flexWrap: "wrap",
-                        justifyContent: "space-between",
-                        paddingVertical: 24,
-                        paddingHorizontal: 5,
-                    }}>
+                    <View style={styles.monthSelector}>
                         {
                             monthsLabel.map((month, index) => (
                                 <TouchableOpacity
@@ -77,48 +64,26 @@ export default function MonthYearPicker({ showPicker, closePicker, activeMonth, 
                     </View>
                     
                     {/* Footer buttons options */}
-                    <View style={{
-                        flexDirection: "row",
-                        width: "100%",
-                        alignItems: "center",
-                        justifyContent: "flex-end"
-                    }}>
-                        <TouchableOpacity onPress={closePicker}>
+                    <View style={styles.footer}>
+                        <TouchableOpacity
+                            style={styles.footerActionBtn}
+                            onPress={closePicker}
+                        >
                             <Text style={{
                                 fontSize: 14,
                                 color: `rgba(0,0,0, .5)`,
                             }}>Cancelar</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{
-                            flexDirection: "row",
-                            alignItems: "center",
-                            paddingVertical: 6,
-                            paddingHorizontal: 12,
-                            marginLeft: 16
-                        }}
+                        <TouchableOpacity style={styles.footerActionBtn}
                             onPress={seleteCurrentDate}
                         >
-                            <Text style={{
-                                fontSize: 14,
-                                color: `rgb(${Colors.blueRgbValue})`,
-                                marginRight: 4,
-                            }}>Data Atual</Text>
+                            <Text style={styles.actionLabelBlue}>Data Atual</Text>
                             <FontAwesome name="calendar-check-o" size={16} color={`rgb(${Colors.blueRgbValue})`} />
                         </TouchableOpacity>
-                        <TouchableOpacity style={{
-                            flexDirection: "row",
-                            alignItems: "center",
-                            paddingVertical: 6,
-                            paddingHorizontal: 12,
-                            marginLeft: 16
-                        }}
+                        <TouchableOpacity style={styles.footerActionBtn}
                             onPress={selectDate}
                         >
-                            <Text style={{
-                                fontSize: 14,
-                                color: `rgb(${Colors.blueRgbValue})`,
-                                marginRight: 4,
-                            }}>Ok</Text>
+                            <Text style={styles.actionLabelBlue}>Ok</Text>
                             <AntDesign name="checkcircleo" size={16} color={`rgb(${Colors.blueRgbValue})`} />
                         </TouchableOpacity>
                     </View>

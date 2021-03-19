@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "../../constants";
 
 export default StyleSheet.create({
     container: {
@@ -38,8 +39,23 @@ export default StyleSheet.create({
         paddingHorizontal: 6,
         color: "rgba(0,0,0, .35)",
     },
+    yearSelector: {
+        position: "relative",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginHorizontal: "auto",
+        width: "70%"
+    },
     yearLabel: {
         fontSize: 24,
+    },
+    monthSelector: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
+        paddingVertical: 24,
+        paddingHorizontal: 5,
     },
     monthCard: {
         display: "flex",
@@ -50,5 +66,22 @@ export default StyleSheet.create({
         marginVertical: 6,
         borderRadius: 5,
         backgroundColor: "rgba(0,0,0, .025)"
+    },
+    footer: {
+        flexDirection: "row",
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "space-around"
+    },
+    footerActionBtn: {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingVertical: 6,
+        paddingHorizontal: 2
+    },
+    actionLabelBlue: {
+        fontSize: 14,
+        color: `rgb(${Colors.blueRgbValue})`,
+        marginRight: 6,
     }
 });
