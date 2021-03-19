@@ -81,7 +81,7 @@ export default StyleSheet.create({
     },
     actionLabelBlue: {
         fontSize: 14,
-        color: `rgb(${Colors.blueRgbValue})`,
+        color: `rgb(${Colors.blueRGB})`,
         marginRight: 6,
     }
 });

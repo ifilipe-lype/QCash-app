@@ -4,11 +4,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, Text } from "react-native";
 
 import HomeScreen from "../screens/Home";
+import IncomeScreen from "../screens/Incomes";
 
 
 import Colors from "../constants/colors";
 
-import { Entypo, Feather } from '@expo/vector-icons';
+import { Entypo, Feather, AntDesign } from '@expo/vector-icons';
 
 const Tabs = createBottomTabNavigator();
 
@@ -28,7 +29,7 @@ export default function RootTabbedNavigator() {
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Entypo name="home" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRgbValue})` : `rgb(${Colors.grayRgbValue})`} />
+                        <Entypo name="home" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRGB})` : `rgb(${Colors.grayRGB})`} />
                     )
                 }}
                 name="Home"
@@ -37,25 +38,25 @@ export default function RootTabbedNavigator() {
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Entypo name="list" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRgbValue})` : `rgb(${Colors.grayRgbValue})`} />
+                        <Feather name="corner-left-up"  size={focused ? 28 : 24} color={focused ? `rgb(${Colors.greenRGB})` : `rgb(${Colors.grayRGB})`} />
                     )
                 }}
-                name="Transation"
-                component={Transations}
+                name="Incomes"
+                component={IncomeScreen}
             />
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Feather name="search" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRgbValue})` : `rgb(${Colors.grayRgbValue})`} />
+                        <Feather name="corner-right-down" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.redRGB})` : `rgb(${Colors.grayRGB})`} />
                     )
                 }}
-                name="Search"
+                name="Outcomes"
                 component={Search}
             />
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Feather name="more-horizontal" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRgbValue})` : `rgb(${Colors.grayRgbValue})`} />
+                        <Feather name="more-horizontal" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRGB})` : `rgb(${Colors.grayRGB})`} />
                     )
                 }}
                 name="MenuBar"
