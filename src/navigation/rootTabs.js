@@ -29,7 +29,7 @@ export default function RootTabbedNavigator() {
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Entypo name="home" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRgbValue})` : `rgb(${Colors.grayRgbValue})`} />
+                        <Entypo name="home" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRGB})` : `rgb(${Colors.grayRGB})`} />
                     )
                 }}
                 name="Home"
@@ -38,7 +38,7 @@ export default function RootTabbedNavigator() {
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Feather name="corner-left-up"  size={focused ? 28 : 24} color={focused ? `rgb(${Colors.greenRgbValue})` : `rgb(${Colors.grayRgbValue})`} />
+                        <Feather name="corner-left-up"  size={focused ? 28 : 24} color={focused ? `rgb(${Colors.greenRGB})` : `rgb(${Colors.grayRGB})`} />
                     )
                 }}
                 name="Incomes"
@@ -47,7 +47,7 @@ export default function RootTabbedNavigator() {
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Feather name="corner-right-down" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.redRgbValue})` : `rgb(${Colors.grayRgbValue})`} />
+                        <Feather name="corner-right-down" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.redRGB})` : `rgb(${Colors.grayRGB})`} />
                     )
                 }}
                 name="Outcomes"
@@ -56,7 +56,7 @@ export default function RootTabbedNavigator() {
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Feather name="more-horizontal" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRgbValue})` : `rgb(${Colors.grayRgbValue})`} />
+                        <Feather name="more-horizontal" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRGB})` : `rgb(${Colors.grayRGB})`} />
                     )
                 }}
                 name="MenuBar"

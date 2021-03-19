@@ -34,7 +34,7 @@ export default function HomeScreen() {
                     {/* Total Month Gain */}
                     <View style={{justifyContent: "center", alignItems: "center"}}>
                         <Text style={styles.label}>Rendimento Total</Text>
-                        <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRgbValue})`, fontSize: 22 }]}>712,890</Text>
+                        <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRGB})`, fontSize: 22 }]}>712,890</Text>
                     </View>
 
                     {/* Incomes and Outcomes Totals */}
@@ -46,18 +46,18 @@ export default function HomeScreen() {
                             </View>
                             <View>
                                 <Text style={styles.label}>ganhos</Text>
-                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRgbValue})` }]}>712,890</Text>
+                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRGB})` }]}>712,890</Text>
                             </View>
                         </TouchableOpacity>
 
                         {/* Outcomes Total */}
                         <TouchableOpacity style={styles.entryCard}>
-                            <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRgbValue})`}]}>
+                            <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRGB})`}]}>
                                 <AntDesign name="arrowdown" size={20} color="white" />
                             </View>
                             <View>
                                 <Text style={styles.label}>despesas</Text>
-                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRgbValue})` }]}>712,890</Text>
+                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>712,890</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

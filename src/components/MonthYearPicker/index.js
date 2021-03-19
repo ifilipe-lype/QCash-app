@@ -78,13 +78,13 @@ export default function MonthYearPicker({ showPicker, closePicker, activeMonth, 
                             onPress={seleteCurrentDate}
                         >
                             <Text style={styles.actionLabelBlue}>Data Atual</Text>
-                            <FontAwesome name="calendar-check-o" size={16} color={`rgb(${Colors.blueRgbValue})`} />
+                            <FontAwesome name="calendar-check-o" size={16} color={`rgb(${Colors.blueRGB})`} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.footerActionBtn}
                             onPress={selectDate}
                         >
                             <Text style={styles.actionLabelBlue}>Ok</Text>
-                            <AntDesign name="checkcircleo" size={16} color={`rgb(${Colors.blueRgbValue})`} />
+                            <AntDesign name="checkcircleo" size={16} color={`rgb(${Colors.blueRGB})`} />
                         </TouchableOpacity>
                     </View>
                 </View>

@@ -41,7 +41,7 @@ export default StyleSheet.create({
         padding: 6,
         marginRight: 6,
         borderRadius: 100,
-        backgroundColor: `rgb(${Colors.greenRgbValue})`
+        backgroundColor: `rgb(${Colors.greenRGB})`
     },
     label: {
         fontSize: 14,
@@ -63,10 +63,10 @@ export default StyleSheet.create({
     },
     datePickerBtnLabel: {
         fontSize: 18,
-        color: `rgb(${Colors.grayDarkRgbValue})`
+        color: `rgb(${Colors.grayDarkRGB})`
     },
     datePickerBtnIcon: {
         marginLeft: 6,
-        color: `rgb(${Colors.grayDarkRgbValue})`
+        color: `rgb(${Colors.grayDarkRGB})`
     }
 });
