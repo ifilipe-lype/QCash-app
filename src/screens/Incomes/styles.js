@@ -26,8 +26,12 @@ export default StyleSheet.create({
         paddingVertical: 8,
     },
     resultLabel: {
-        color: `rgb(${Colors.purpleDarkRGB})`,
+        color: `rgba(0,0,0, .65)`,
         fontSize: 12,
+    },
+    resultAmount: {
+        color: `rgba(0,0,0, .65)`,
+        fontWeight: "bold"
     },
     incomes: {
         backgroundColor: "#fafafa",
@@ -35,6 +39,14 @@ export default StyleSheet.create({
         borderTopStartRadius: 30,
         padding: 15,
         height: "100%"
+    },
+    incomeResults: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingBottom: 12,
+        borderBottomWidth: 1,
+        borderColor: `rgba(${Colors.purpleDarkRGB}, .12)`
     },
     incomeResult: {
         flexDirection: "row",
