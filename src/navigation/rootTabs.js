@@ -68,26 +68,6 @@ export default function RootTabbedNavigator() {
     )
 };
 
-function Transations() {
-    return (
-        <View>
-            <Text>
-                Hello, Transations!
-            </Text>
-        </View>
-    )
-}
-
-function Search() {
-    return (
-        <View>
-            <Text>
-                Hello, Search!
-            </Text>
-        </View>
-    )
-}
-
 function MenuBar() {
     return (
         <View>
