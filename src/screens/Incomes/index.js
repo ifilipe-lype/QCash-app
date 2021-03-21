@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, FlatList, ScrollView } from "react-native
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import Entry from "../../components/Entry";
-
+import EntriesViewerFilter from "../../components/EntriesViewerFilter";
 
 import { Entypo, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -101,13 +101,13 @@ export default function IncomeScreen() {
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
 
-    function toogleVisibility(doneEntries) {
-        if (doneEntries) {
-            setShowDoneEntries(!showDoneEntries);
-        } else {
-            setNotShowDoneEntries(!showNotDoneEntries);
-        }
+    function toogleDoneVisibility(){
+        setShowDoneEntries(!showDoneEntries);
     }
+
+   function toogleNotDoneVisibility(){
+    setNotShowDoneEntries(!showNotDoneEntries);
+   }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -125,41 +125,13 @@ export default function IncomeScreen() {
             </View>
 
             <View style={styles.incomes}>
-                {/* Header */}
-                <View style={styles.incomeResultHeader}>
-                    <TouchableOpacity onPress={() => toogleVisibility(true)} style={styles.incomeResult}>
-                        {
-                            showDoneEntries ? (
-                                <MaterialCommunityIcons name="calendar-check-outline" size={28} color="white" />
-                            ) : (
-                                <MaterialCommunityIcons name="eye-off-outline" size={28} color="rgba(0,0,0, .35)" />
-                            )
-                        }
-                        <View style={{
-                            marginLeft: 6
-                        }}>
-                            <Text style={styles.resultLabel}>Efetuados</Text>
-                            <Text style={styles.resultAmount}>645,000 kz</Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => toogleVisibility(false)} style={styles.incomeResult}>
-                        {
-                            showNotDoneEntries ? (
-                                <MaterialCommunityIcons name="calendar-blank-outline" size={28} color="white" />
-                            ) : (
-                                <MaterialCommunityIcons name="eye-off-outline" size={28} color="rgba(0,0,0, .35)" />
-                            )
-                        }
-                        <View style={{
-                            marginLeft: 6
-                        }}>
-                            <Text style={styles.resultLabel}>Por efetuar</Text>
-                            <Text style={styles.resultAmount}>145,000 kz</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-
+                <EntriesViewerFilter
+                    isIncome
+                    showDoneEntries={showDoneEntries}
+                    showNotDoneEntries={showNotDoneEntries}
+                    toogleDoneVisibility={toogleDoneVisibility}
+                    toogleNotDoneVisibility={toogleNotDoneVisibility}
+                />
                 <FlatList
                     data={fakeData}
                     showsVerticalScrollIndicator={false}
