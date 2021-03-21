@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Entry from "../../components/Entry";
 import EntriesViewerFilter from "../../components/EntriesViewerFilter";
 
-import { Entypo, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo, Feather } from '@expo/vector-icons';
 
 import styles from "./styles";
 
@@ -101,13 +101,13 @@ export default function IncomeScreen() {
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
 
-    function toogleDoneVisibility(){
+    function toogleDoneVisibility() {
         setShowDoneEntries(!showDoneEntries);
     }
 
-   function toogleNotDoneVisibility(){
-    setNotShowDoneEntries(!showNotDoneEntries);
-   }
+    function toogleNotDoneVisibility() {
+        setNotShowDoneEntries(!showNotDoneEntries);
+    }
 
     return (
         <SafeAreaView style={styles.container}>
