@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Colors } from "../../constants";
 
-import Income from "../../components/Income";
+import Entry from "../../components/Entry";
 
 
 import { Entypo, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -165,7 +165,7 @@ export default function IncomeScreen() {
                 <FlatList
                     data={fakeData}
                     showsVerticalScrollIndicator={false}
-                    renderItem={({ item }) => <Income data={item} />}
+                    renderItem={({ item }) => <Entry isIncome={true} data={item} />}
                     keyExtractor={(item) => item.description}
                     ItemSeparatorComponent={
                         () => <View style={{
