@@ -5,6 +5,7 @@ import { View, Text } from "react-native";
 
 import HomeScreen from "../screens/Home";
 import IncomeScreen from "../screens/Incomes";
+import OutcomeScreen from "../screens/Outcomes";
 
 
 import Colors from "../constants/colors";
@@ -52,7 +53,7 @@ export default function RootTabbedNavigator() {
                     )
                 }}
                 name="Outcomes"
-                component={Search}
+                component={OutcomeScreen}
             />
             <Tabs.Screen
                 options={{
