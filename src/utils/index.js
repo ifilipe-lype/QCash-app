@@ -1,7 +1,7 @@
 import { daysOfWeek } from "../constants";
 
-export function getWeekDayHourFormat(date){
-    const date = new Date(date);
+export function getWeekDayHourFormat(dateInput){
+    const date = new Date(dateInput);
 
     const day = date.getDate();
     const hour = date.getHours();
@@ -9,4 +9,8 @@ export function getWeekDayHourFormat(date){
     const dayOfWeek = daysOfWeek[date.getDay()];
 
     return `${dayOfWeek} ${day}, as ${hour}:${min}`;
+}
+
+export function maxLengthOrDots(str, maxLength=65){
+    return str.length > maxLength ? `${str.slice(0, maxLength)}...` : str
 }
