@@ -22,6 +22,7 @@ export default function RootTabbedNavigator() {
                 style: {
                     borderTopWidth: 0,
                     backgroundColor: "white",
+                    height: 48,
                     elevation: 0
                 }
             }}

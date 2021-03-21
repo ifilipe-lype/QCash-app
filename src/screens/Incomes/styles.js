@@ -12,6 +12,7 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         backgroundColor: "white",
         paddingHorizontal: 12,
+        height: 48,
         paddingVertical: 8
     },
     screenLabel: {
@@ -26,27 +27,36 @@ export default StyleSheet.create({
         paddingVertical: 8,
     },
     resultLabel: {
-        color: `rgba(0,0,0, .65)`,
+        color: `white`,
+        fontWeight: "bold",
         fontSize: 12,
     },
     resultAmount: {
-        color: `rgba(0,0,0, .65)`,
+        color: `white`,
         fontWeight: "bold"
     },
     incomes: {
-        backgroundColor: "#fafafa",
-        borderTopEndRadius: 30,
-        borderTopStartRadius: 30,
-        padding: 15,
-        height: "100%"
+        backgroundColor: "white",
+        paddingHorizontal: 8,
+        paddingBottom: 100,
     },
-    incomeResults: {
+    incomeResultHeader: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        paddingBottom: 12,
-        borderBottomWidth: 1,
-        borderColor: `rgba(${Colors.purpleDarkRGB}, .12)`
+        padding: 15,
+        borderRadius: 30,
+        backgroundColor: `rgba(${Colors.greenRGB}, 1)`,
+        borderColor: `rgba(${Colors.purpleDarkRGB}, .12)`,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+
+        elevation: 3,
     },
     incomeResult: {
         flexDirection: "row",
