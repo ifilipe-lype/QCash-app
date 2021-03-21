@@ -26,40 +26,13 @@ export default StyleSheet.create({
         paddingHorizontal: 12,
         paddingVertical: 8,
     },
-    resultLabel: {
-        color: `white`,
-        fontWeight: "bold",
-        fontSize: 12,
-    },
-    resultAmount: {
-        color: `white`,
-        fontWeight: "bold"
-    },
-    incomes: {
+    entries: {
         backgroundColor: "white",
         paddingHorizontal: 8,
         paddingBottom: 100,
     },
-    incomeResultHeader: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: 15,
-        borderRadius: 30,
-        backgroundColor: `rgba(${Colors.greenRGB}, 1)`,
-        borderColor: `rgba(${Colors.purpleDarkRGB}, .12)`,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-
-        elevation: 3,
-    },
-    incomeResult: {
-        flexDirection: "row",
-        alignItems: "center"
+    entrySeparator: {
+        height: 1,
+        backgroundColor: "rgba(0,0,0, .05)"
     }
 });

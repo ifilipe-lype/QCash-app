@@ -23,12 +23,12 @@ export default StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
     },
-    amount: {
+    amount: (isIncome) => ({
         fontWeight: "500",
         fontSize: 18,
-        color: `rgb(${Colors.greenRGB})`,
+        color: `rgb(${isIncome ? Colors.greenRGB : Colors.redRGB})`,
         marginRight: 12
-    },
+    }),
     doneIcon: {
         color: `rgb(${Colors.greenRGB})`
     }
