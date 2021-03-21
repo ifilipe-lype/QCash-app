@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, FlatList, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import Entry from "../../components/Entry";
@@ -124,7 +124,7 @@ export default function IncomeScreen() {
                 </View>
             </View>
 
-            <View style={styles.incomes}>
+            <View style={styles.entries}>
                 <EntriesViewerFilter
                     isIncome
                     showDoneEntries={showDoneEntries}
@@ -138,10 +138,9 @@ export default function IncomeScreen() {
                     renderItem={({ item }) => <Entry isIncome={true} data={item} />}
                     keyExtractor={(item) => item.description}
                     ItemSeparatorComponent={
-                        () => <View style={{
-                            height: 1,
-                            backgroundColor: "rgba(0,0,0, .05)"
-                        }}></View>
+                        () => (
+                        <View style={styles.entrySeparator}></View>
+                        )
                     }
                 />
             </View>
