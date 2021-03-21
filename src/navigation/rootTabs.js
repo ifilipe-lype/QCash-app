@@ -5,11 +5,12 @@ import { View, Text } from "react-native";
 
 import HomeScreen from "../screens/Home";
 import IncomeScreen from "../screens/Incomes";
+import OutcomeScreen from "../screens/Outcomes";
 
 
 import Colors from "../constants/colors";
 
-import { Entypo, Feather, AntDesign } from '@expo/vector-icons';
+import { Entypo, Feather } from '@expo/vector-icons';
 
 const Tabs = createBottomTabNavigator();
 
@@ -52,7 +53,7 @@ export default function RootTabbedNavigator() {
                     )
                 }}
                 name="Outcomes"
-                component={Search}
+                component={OutcomeScreen}
             />
             <Tabs.Screen
                 options={{
@@ -66,26 +67,6 @@ export default function RootTabbedNavigator() {
         </Tabs.Navigator>
     )
 };
-
-function Transations() {
-    return (
-        <View>
-            <Text>
-                Hello, Transations!
-            </Text>
-        </View>
-    )
-}
-
-function Search() {
-    return (
-        <View>
-            <Text>
-                Hello, Search!
-            </Text>
-        </View>
-    )
-}
 
 function MenuBar() {
     return (
