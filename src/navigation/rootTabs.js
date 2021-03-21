@@ -10,7 +10,7 @@ import OutcomeScreen from "../screens/Outcomes";
 
 import Colors from "../constants/colors";
 
-import { Entypo, Feather, AntDesign } from '@expo/vector-icons';
+import { Entypo, Feather } from '@expo/vector-icons';
 
 const Tabs = createBottomTabNavigator();
 
