@@ -5,6 +5,7 @@ import { Entypo, Feather } from '@expo/vector-icons';
 
 import Entry from "../../components/Entry";
 import EntriesViewerFilter from "../../components/EntriesViewerFilter";
+import AddNewEntryForm from "../../components/AddNewEntryForm";
 
 import styles from "./styles";
 
@@ -58,6 +59,7 @@ export default function IncomeScreen() {
                     }
                 />
             </View>
+            <AddNewEntryForm show={true} />
         </SafeAreaView>
     )
 }
