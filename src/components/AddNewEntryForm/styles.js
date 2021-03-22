@@ -33,7 +33,7 @@ export default StyleSheet.create({
     input: {
         borderWidth: 1,
         padding: 8,
-        borderColor: "rgba(0,0,0, .35)",
+        borderColor: "rgba(0,0,0, .08)",
         borderRadius: 6
     },
     errorMsg: {
@@ -44,7 +44,7 @@ export default StyleSheet.create({
     choices:{
         borderWidth: 1,
         borderRadius: 10,
-        borderColor: "rgba(0,0,0, .35)",
+        borderColor: "rgba(0,0,0, .08)",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center"

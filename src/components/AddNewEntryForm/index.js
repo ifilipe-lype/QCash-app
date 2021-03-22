@@ -76,7 +76,7 @@ export default function AddNewEntry({ show, close, isIncome }) {
                         <View style={styles.choices}>
                             <TouchableOpacity
                                 onPress={() => setDone(true)}
-                                style={[styles.choice, { borderRightWidth: 1, borderColor: "rgba(0,0,0, .35)" }]}
+                                style={[styles.choice, { borderRightWidth: 1, borderColor: "rgba(0,0,0, .08)" }]}
                             >
                                 <Text>Efetuado</Text>
                                 <AntDesign name="checkcircle" color={done ? `rgb(${mainColor})` : "rgba(0,0,0, .15)"} size={16} style={styles.icon} />
