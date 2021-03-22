@@ -9,7 +9,7 @@ import { Colors } from "../../constants";
 import FloatModal from "../FloatModal";
 import { AntDesign, Entypo } from '@expo/vector-icons';
 
-export default function MonthYearPicker({ show, close }) {
+export default function AddNewEntry({ show, close }) {
 
     const [done, setDone] = useState(true);
     const { control, handleSubmit, errors } = useForm();
