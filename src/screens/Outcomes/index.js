@@ -3,9 +3,6 @@ import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Entypo, Feather } from '@expo/vector-icons';
 
-import FlashMessage from "react-native-flash-message";
-
-
 import Entry from "../../components/Entry";
 import EntriesViewerFilter from "../../components/EntriesViewerFilter";
 import AddNewEntryForm from "../../components/AddNewEntryForm";
@@ -68,7 +65,6 @@ export default function OutcomeScreen() {
                 />
             </View>
             <AddNewEntryForm show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
-            <FlashMessage ref={useRef()} position="bottom" />
         </SafeAreaView>
     )
 }

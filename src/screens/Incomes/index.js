@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Entypo, Feather } from '@expo/vector-icons';
-import FlashMessage from "react-native-flash-message";
 
 import Entry from "../../components/Entry";
 import EntriesViewerFilter from "../../components/EntriesViewerFilter";
@@ -68,7 +67,6 @@ export default function IncomeScreen() {
                 />
             </View>
             <AddNewEntryForm isIncome show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
-            <FlashMessage position="bottom" />
         </SafeAreaView>
     )
 }
