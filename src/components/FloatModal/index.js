@@ -9,11 +9,9 @@ export default function FloatModal({ show, close, children }) {
     return (
         <Modal visible={show} transparent >
             <View style={styles.container}>
-            {/* Backdrop */}
-            <TouchableOpacity onPress={close} style={styles.backdrop}></TouchableOpacity>
-
-                <View style={styles.modalBody}>
-                   { children }
+                <TouchableOpacity onPress={close} style={styles.backdrop}></TouchableOpacity>
+                <View style={styles.formBody}>
+                    {children}
                 </View>
             </View>
         </Modal>
