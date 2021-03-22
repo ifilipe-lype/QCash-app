@@ -7,11 +7,12 @@ export default StyleSheet.create({
         borderRadius: 6,
         overflow: "hidden"
     },
-    header: {
-        backgroundColor: `rgba(${Colors.grayRGB}, .25)`,
+    header:(isIncome) => ({
+        borderBottomWidth: 2,
+        borderColor: isIncome ? `rgb(${Colors.greenRGB})` : `rgb(${Colors.redRGB})`,
         paddingVertical: 24,
         paddingHorizontal: 12
-    },
+    }),
     title: {
         fontSize: 20,
         color: `rgb(${Colors.greenRGB})`,
@@ -32,7 +33,7 @@ export default StyleSheet.create({
     input: {
         borderWidth: 1,
         padding: 8,
-        borderColor: "rgba(0,0,0, .35)",
+        borderColor: "rgba(0,0,0, .08)",
         borderRadius: 6
     },
     errorMsg: {
@@ -43,7 +44,7 @@ export default StyleSheet.create({
     choices:{
         borderWidth: 1,
         borderRadius: 10,
-        borderColor: "rgba(0,0,0, .35)",
+        borderColor: "rgba(0,0,0, .08)",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center"
@@ -64,13 +65,11 @@ export default StyleSheet.create({
     footer: {
         justifyContent: "center",
         alignItems: "center",
-        paddingVertical: 24,
+        paddingBottom: 24,
         
     },
     submitBtn: {
         borderRadius: 100,
-        width: 48,
-        height: 48,
         justifyContent: "center",
         alignItems: "center",
         shadowColor: "#000",

@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Entypo, Feather } from '@expo/vector-icons';
-import FlashMessage from "react-native-flash-message";
 
 import Entry from "../../components/Entry";
 import EntriesViewerFilter from "../../components/EntriesViewerFilter";
 import AddNewEntryForm from "../../components/AddNewEntryForm";
+
+import { Colors } from "../../constants";
 
 import styles from "./styles";
 
@@ -40,7 +41,7 @@ export default function IncomeScreen() {
                         style={[styles.headerAction, { paddingRight: 0 }]}
                         onPress={() => setShowAddEntryForm(true)}    
                     >
-                        <Entypo name="add-to-list" size={20} color="rgba(0,0,0, .35)" />
+                        <Entypo name="add-to-list" size={24} color={`rgb(${Colors.greenRGB})`} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -65,8 +66,7 @@ export default function IncomeScreen() {
                     }
                 />
             </View>
-            <AddNewEntryForm show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
-            <FlashMessage position="bottom" />
+            <AddNewEntryForm isIncome show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
         </SafeAreaView>
     )
 }
