@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import { showMessage } from "react-native-flash-message";
 
 import styles from "./styles";
 import { Colors } from "../../constants";
@@ -15,7 +16,12 @@ export default function MonthYearPicker({ show, close }) {
 
     function submitForm(data) {
         console.log({ ...data, done });
-        Alert.alert("Novo ganho adicionado com sucesso")
+        close()
+        showMessage({
+            message: "novo ganho adicionado com sucesso",
+            type: "success",
+            duration: 2500
+        });
     }
 
     return (
@@ -71,14 +77,14 @@ export default function MonthYearPicker({ show, close }) {
                                 style={[styles.choice, { borderRightWidth: 1, borderColor: "rgba(0,0,0, .35)" }]}
                             >
                                 <Text>Recebido</Text>
-                                <AntDesign name="checkcircle" color={done ? `rgb(${Colors.greenRGB})` : "rgba(0,0,0, .35)"} size={16} style={styles.icon} />
+                                <AntDesign name="checkcircle" color={done ? `rgb(${Colors.greenRGB})` : "rgba(0,0,0, .15)"} size={16} style={styles.icon} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => setDone(false)}
                                 style={styles.choice}
                             >
                                 <Text>Por Receber</Text>
-                                <Entypo name="pin" size={16} color={!done ? `rgb(${Colors.redRGB})` : "rgba(0,0,0, .35)"} style={styles.icon} />
+                                <Entypo name="pin" size={16} color={!done ? `rgb(${Colors.redRGB})` : "rgba(0,0,0, .15)"} style={styles.icon} />
                             </TouchableOpacity>
                         </View>
                     </View>
