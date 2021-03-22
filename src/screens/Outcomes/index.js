@@ -11,6 +11,7 @@ import EntriesViewerFilter from "../../components/EntriesViewerFilter";
 import AddNewEntryForm from "../../components/AddNewEntryForm";
 
 import styles from "./styles";
+import { Colors } from "../../constants";
 
 import fakeData from "./fakeOutcomesData";
 
@@ -42,7 +43,7 @@ export default function OutcomeScreen() {
                         onPress={() => setShowAddEntryForm(true)}
                         style={[styles.headerAction, { paddingRight: 0 }]}
                     >
-                        <Entypo name="add-to-list" size={20} color="rgba(0,0,0, .35)" />
+                        <Entypo name="add-to-list" size={24} color={`rgb(${Colors.redRGB})`} />
                     </TouchableOpacity>
                 </View>
             </View>

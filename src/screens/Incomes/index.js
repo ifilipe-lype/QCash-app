@@ -8,6 +8,8 @@ import Entry from "../../components/Entry";
 import EntriesViewerFilter from "../../components/EntriesViewerFilter";
 import AddNewEntryForm from "../../components/AddNewEntryForm";
 
+import { Colors } from "../../constants";
+
 import styles from "./styles";
 
 import fakeData from "./fakeIncomesData";
@@ -40,7 +42,7 @@ export default function IncomeScreen() {
                         style={[styles.headerAction, { paddingRight: 0 }]}
                         onPress={() => setShowAddEntryForm(true)}    
                     >
-                        <Entypo name="add-to-list" size={20} color="rgba(0,0,0, .35)" />
+                        <Entypo name="add-to-list" size={24} color={`rgb(${Colors.greenRGB})`} />
                     </TouchableOpacity>
                 </View>
             </View>

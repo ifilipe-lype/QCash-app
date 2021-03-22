@@ -17,10 +17,11 @@ export default StyleSheet.create({
     },
     screenLabel: {
         fontSize: 14,
-        color: `rgb(${Colors.purpleDarkRGB})`
+        color: `rgba(${Colors.purpleDarkRGB}, .5)`
     },
     headerRightActions: {
         flexDirection: "row",
+        alignItems: "center"
     },
     headerAction: {
         paddingHorizontal: 12,
