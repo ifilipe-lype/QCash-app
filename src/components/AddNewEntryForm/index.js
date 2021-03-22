@@ -22,7 +22,7 @@ export default function AddNewEntry({ show, close, isIncome }) {
         showMessage({
             message: "novo ganho adicionado com sucesso",
             type: "success",
-            duration: 2500
+            duration: 3000
         });
     }
 
