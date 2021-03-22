@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Entypo, Feather } from '@expo/vector-icons';
 
+import FlashMessage from "react-native-flash-message";
+
+
 import Entry from "../../components/Entry";
 import EntriesViewerFilter from "../../components/EntriesViewerFilter";
+import AddNewEntryForm from "../../components/AddNewEntryForm";
 
 import styles from "./styles";
 
 import fakeData from "./fakeOutcomesData";
 
 export default function OutcomeScreen() {
+
+    const [showAddEntryForm, setShowAddEntryForm] = useState(false);
 
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
@@ -32,7 +38,10 @@ export default function OutcomeScreen() {
                     <TouchableOpacity style={styles.headerAction}>
                         <Feather name="search" size={20} color="rgba(0,0,0, .35)" />
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.headerAction, { paddingRight: 0 }]}>
+                    <TouchableOpacity
+                        onPress={() => setShowAddEntryForm(true)}
+                        style={[styles.headerAction, { paddingRight: 0 }]}
+                    >
                         <Entypo name="add-to-list" size={20} color="rgba(0,0,0, .35)" />
                     </TouchableOpacity>
                 </View>
@@ -57,6 +66,8 @@ export default function OutcomeScreen() {
                     }
                 />
             </View>
+            <AddNewEntryForm show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
+            <FlashMessage ref={useRef()} position="bottom" />
         </SafeAreaView>
     )
 }
