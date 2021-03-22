@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Entypo, Feather } from '@expo/vector-icons';
+import FlashMessage from "react-native-flash-message";
 
 import Entry from "../../components/Entry";
 import EntriesViewerFilter from "../../components/EntriesViewerFilter";
@@ -13,7 +14,7 @@ import fakeData from "./fakeIncomesData";
 
 export default function IncomeScreen() {
 
-    const [showAddEntryForm, setShowAddEntryForm] = useState(true);
+    const [showAddEntryForm, setShowAddEntryForm] = useState(false);
 
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
@@ -65,6 +66,7 @@ export default function IncomeScreen() {
                 />
             </View>
             <AddNewEntryForm show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
+            <FlashMessage position="bottom" />
         </SafeAreaView>
     )
 }
