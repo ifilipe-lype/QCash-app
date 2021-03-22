@@ -65,7 +65,7 @@ export default StyleSheet.create({
     footer: {
         justifyContent: "center",
         alignItems: "center",
-        paddingVertical: 24,
+        paddingBottom: 24,
         
     },
     submitBtn: {
