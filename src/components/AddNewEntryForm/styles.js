@@ -69,8 +69,6 @@ export default StyleSheet.create({
     },
     submitBtn: {
         borderRadius: 100,
-        width: 48,
-        height: 48,
         justifyContent: "center",
         alignItems: "center",
         shadowColor: "#000",
