@@ -9,10 +9,12 @@ import { Colors } from "../../constants";
 import FloatModal from "../FloatModal";
 import { AntDesign, Entypo } from '@expo/vector-icons';
 
-export default function AddNewEntry({ show, close }) {
+export default function AddNewEntry({ show, close, isIncome }) {
 
     const [done, setDone] = useState(true);
     const { control, handleSubmit, errors } = useForm();
+
+    const mainColor = isIncome ? Colors.greenRGB : Colors.redRGB;
 
     function submitForm(data) {
         console.log({ ...data, done });
@@ -28,7 +30,7 @@ export default function AddNewEntry({ show, close }) {
         <FloatModal show={show} close={close}>
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.title}>Adicionar Ganho</Text>
+                    <Text style={[styles.title, { color: `rgb(${mainColor})` }]}>Adicionar { isIncome ? "Ganho" : "Despesa" }</Text>
                 </View>
                 <View style={styles.formBody}>
                     <View style={styles.inputGroup}>
@@ -76,15 +78,15 @@ export default function AddNewEntry({ show, close }) {
                                 onPress={() => setDone(true)}
                                 style={[styles.choice, { borderRightWidth: 1, borderColor: "rgba(0,0,0, .35)" }]}
                             >
-                                <Text>Recebido</Text>
-                                <AntDesign name="checkcircle" color={done ? `rgb(${Colors.greenRGB})` : "rgba(0,0,0, .15)"} size={16} style={styles.icon} />
+                                <Text>Efetuado</Text>
+                                <AntDesign name="checkcircle" color={done ? `rgb(${mainColor})` : "rgba(0,0,0, .15)"} size={16} style={styles.icon} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => setDone(false)}
                                 style={styles.choice}
                             >
-                                <Text>Por Receber</Text>
-                                <Entypo name="pin" size={16} color={!done ? `rgb(${Colors.redRGB})` : "rgba(0,0,0, .15)"} style={styles.icon} />
+                                <Text>Por efetuar</Text>
+                                <Entypo name="pin" size={16} color={!done ? `rgb(${mainColor})` : "rgba(0,0,0, .15)"} style={styles.icon} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -93,7 +95,7 @@ export default function AddNewEntry({ show, close }) {
 
                 <View style={styles.footer}>
                     <TouchableOpacity onPress={handleSubmit(submitForm)} style={styles.submitBtn}>
-                        <AntDesign name="checkcircle" size={48} color={`rgb(${Colors.greenRGB})`} />
+                        <AntDesign name="checkcircle" size={48} color={`rgb(${mainColor})`} />
                     </TouchableOpacity>
                 </View>
             </View>
