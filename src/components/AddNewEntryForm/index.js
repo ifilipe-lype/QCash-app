@@ -29,7 +29,7 @@ export default function AddNewEntry({ show, close, isIncome }) {
     return (
         <FloatModal show={show} close={close}>
             <View style={styles.container}>
-                <View style={styles.header}>
+                <View style={styles.header(isIncome)}>
                     <Text style={[styles.title, { color: `rgb(${mainColor})` }]}>Adicionar { isIncome ? "Ganho" : "Despesa" }</Text>
                 </View>
                 <View style={styles.formBody}>

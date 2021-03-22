@@ -7,11 +7,12 @@ export default StyleSheet.create({
         borderRadius: 6,
         overflow: "hidden"
     },
-    header: {
-        backgroundColor: `rgba(${Colors.grayRGB}, .25)`,
+    header:(isIncome) => ({
+        borderBottomWidth: 2,
+        borderColor: isIncome ? `rgb(${Colors.greenRGB})` : `rgb(${Colors.redRGB})`,
         paddingVertical: 24,
         paddingHorizontal: 12
-    },
+    }),
     title: {
         fontSize: 20,
         color: `rgb(${Colors.greenRGB})`,
