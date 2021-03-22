@@ -65,7 +65,7 @@ export default function IncomeScreen() {
                     }
                 />
             </View>
-            <AddNewEntryForm show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
+            <AddNewEntryForm isIncome show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
             <FlashMessage position="bottom" />
         </SafeAreaView>
     )
