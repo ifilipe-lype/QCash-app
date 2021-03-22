@@ -4,6 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import { View, Text } from "react-native"
 
+import FlashMessage from "react-native-flash-message";
+
 import RootTabbedNavigator from "./rootTabs";
 
 const Stack = createStackNavigator()
@@ -12,6 +14,7 @@ export default function RootNavigator() {
     return (
         <NavigationContainer>
             <RootStackNavigator />
+            <FlashMessage position="bottom" />
         </NavigationContainer>
     )
 }
