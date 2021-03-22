@@ -13,6 +13,8 @@ import fakeData from "./fakeIncomesData";
 
 export default function IncomeScreen() {
 
+    const [showAddEntryForm, setShowAddEntryForm] = useState(true);
+
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
 
@@ -33,7 +35,10 @@ export default function IncomeScreen() {
                     <TouchableOpacity style={styles.headerAction}>
                         <Feather name="search" size={20} color="rgba(0,0,0, .35)" />
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.headerAction, { paddingRight: 0 }]}>
+                    <TouchableOpacity  
+                        style={[styles.headerAction, { paddingRight: 0 }]}
+                        onPress={() => setShowAddEntryForm(true)}    
+                    >
                         <Entypo name="add-to-list" size={20} color="rgba(0,0,0, .35)" />
                     </TouchableOpacity>
                 </View>
@@ -59,7 +64,7 @@ export default function IncomeScreen() {
                     }
                 />
             </View>
-            <AddNewEntryForm show={true} />
+            <AddNewEntryForm show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
         </SafeAreaView>
     )
 }
