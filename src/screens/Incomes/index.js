@@ -17,7 +17,8 @@ import fakeData from "./fakeIncomesData";
 export default function IncomeScreen() {
 
     const [showAddEntryForm, setShowAddEntryForm] = useState(false);
-    const [showEntryDetails, setShowEntryDetails] = useState(true);
+    const [showEntryDetails, setShowEntryDetails] = useState(false);
+    const [selectedEntry, setSelectedEntry] = useState(null);
 
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
@@ -28,6 +29,11 @@ export default function IncomeScreen() {
 
     function toogleNotDoneVisibility() {
         setNotShowDoneEntries(!showNotDoneEntries);
+    }
+
+    function showEntryDetailsViewer(entry){
+        setShowEntryDetails(true);
+        setSelectedEntry(entry);
     }
 
     return (
@@ -59,7 +65,7 @@ export default function IncomeScreen() {
                 <FlatList
                     data={fakeData}
                     showsVerticalScrollIndicator={false}
-                    renderItem={({ item }) => <Entry isIncome={true} data={item} />}
+                    renderItem={({ item }) => <Entry onPress={showEntryDetailsViewer} isIncome={true} data={item} />}
                     keyExtractor={(item) => item.description}
                     ItemSeparatorComponent={
                         () => (
@@ -73,7 +79,7 @@ export default function IncomeScreen() {
                 isIncome
                 show={showEntryDetails}
                 close={setShowEntryDetails}
-                entry={fakeData[0]}
+                entry={selectedEntry}
             />
         </SafeAreaView>
     )
