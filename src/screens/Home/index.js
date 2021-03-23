@@ -1,15 +1,24 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from "react";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { AntDesign } from '@expo/vector-icons';
+import { useSelector, useDispatch } from "react-redux";
 
-import styles from "./styles";
+import { AntDesign } from '@expo/vector-icons';
+import { View, Text, TouchableOpacity } from "react-native";
+
 import MonthYearPicker from "../../components/MonthYearPicker";
 
 import { Colors, monthsLabel } from "../../constants";
+import styles from "./styles";
 
 
 export default function HomeScreen() {
+
+    const dispatch = useDispatch();
+
+    const incomes = useSelector(store => store.incomes);
+    const outcomes = useSelector(store => store.outcomes);
+
+
 
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [activeMonth, setActiveMonth] = useState(2);
@@ -18,6 +27,9 @@ export default function HomeScreen() {
     function closePicker() {
         setShowDatePicker(false);
     }
+
+    useEffect(() => {
+    }, [])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -34,7 +46,9 @@ export default function HomeScreen() {
                     {/* Total Month Gain */}
                     <View style={{justifyContent: "center", alignItems: "center"}}>
                         <Text style={styles.label}>Rendimento Total</Text>
-                        <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRGB})`, fontSize: 22 }]}>712,890</Text>
+                        <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRGB})`, fontSize: 22 }]}>
+                            {}
+                        </Text>
                     </View>
 
                     {/* Incomes and Outcomes Totals */}
@@ -46,7 +60,7 @@ export default function HomeScreen() {
                             </View>
                             <View>
                                 <Text style={styles.label}>ganhos</Text>
-                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRGB})` }]}>712,890</Text>
+                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRGB})` }]}>{}</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -57,7 +71,7 @@ export default function HomeScreen() {
                             </View>
                             <View>
                                 <Text style={styles.label}>despesas</Text>
-                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>712,890</Text>
+                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>{}</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
