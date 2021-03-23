@@ -21,6 +21,8 @@ export default function IncomeScreen() {
 
     const incomes = useSelector(store => store.incomes);
     const [doneIncomes, notDoneIncomes] = getSeparatedIncomes(incomes);
+
+    const [entriesToShow, setEntriesToShow] = useState(incomes)
     
     const doneIncomesTotalAmount = calcTotalAmount(doneIncomes);
     const notDoneIncomesTotalAmount = calcTotalAmount(notDoneIncomes);
@@ -34,15 +36,29 @@ export default function IncomeScreen() {
 
     function toogleDoneVisibility() {
         setShowDoneEntries(!showDoneEntries);
+        filterEntriesToShow(!showDoneEntries, showNotDoneEntries)
     }
 
     function toogleNotDoneVisibility() {
         setNotShowDoneEntries(!showNotDoneEntries);
+        filterEntriesToShow(showDoneEntries, !showNotDoneEntries);
     }
 
     function showEntryDetailsViewer(entry){
         setShowEntryDetails(true);
         setSelectedEntry(entry);
+    }
+
+    function filterEntriesToShow(showDoneEntries, showNotDoneEntries){
+        if(showDoneEntries && showNotDoneEntries){
+            setEntriesToShow(incomes);
+        } else if(!showDoneEntries && showNotDoneEntries){
+            setEntriesToShow(notDoneIncomes);
+        } else if(showDoneEntries && !showNotDoneEntries){
+            setEntriesToShow(doneIncomes);
+        } else {
+            setEntriesToShow([])
+        }
     }
 
     return (
@@ -74,7 +90,7 @@ export default function IncomeScreen() {
                     toogleNotDoneVisibility={toogleNotDoneVisibility}
                 />
                 <FlatList
-                    data={incomes}
+                    data={entriesToShow}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item }) => <Entry onPress={showEntryDetailsViewer} isIncome={true} data={item} />}
                     keyExtractor={(item) => item.id}
