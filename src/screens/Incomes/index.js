@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Entypo, Feather } from '@expo/vector-icons';
@@ -75,12 +75,16 @@ export default function IncomeScreen() {
                 />
             </View>
             <AddNewEntryForm isIncome show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
-            <EntryDetailsViewer
-                isIncome
-                show={showEntryDetails}
-                close={setShowEntryDetails}
-                entry={selectedEntry}
-            />
+            {
+                selectedEntry && (
+                    <EntryDetailsViewer
+                        isIncome
+                        show={showEntryDetails}
+                        close={setShowEntryDetails}
+                        entry={selectedEntry}
+                    />
+                )
+            }
         </SafeAreaView>
     )
 }
