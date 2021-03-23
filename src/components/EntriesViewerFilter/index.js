@@ -16,8 +16,6 @@ export default function EntriesViewerFilter({
     notDoneEntriesAmout,
 }) {
 
-    console.log(doneEntriesAmount, notDoneEntriesAmout)
-
     return (
         <View style={styles.container(isIncome)}>
             <TouchableOpacity onPress={toogleDoneVisibility} style={styles.entryResult}>
