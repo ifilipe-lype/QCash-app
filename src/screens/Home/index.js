@@ -8,6 +8,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import MonthYearPicker from "../../components/MonthYearPicker";
 
 import { Colors, monthsLabel } from "../../constants";
+import { calcTotalAmount, getSeparatedIncomes } from "../../utils";
 import styles from "./styles";
 
 
@@ -17,6 +18,12 @@ export default function HomeScreen() {
 
     const incomes = useSelector(store => store.incomes);
     const outcomes = useSelector(store => store.outcomes);
+
+    const [doneIncomes, notDoneIncomes] = getSeparatedIncomes(incomes);
+    const [doneOutcomes, notDoneOutcomes] = getSeparatedIncomes(outcomes);
+
+    const doneIncomesTotalAmount = calcTotalAmount(doneIncomes);
+    const doneOutcomesTotalAmount = calcTotalAmount(doneOutcomes);
 
 
 
@@ -47,7 +54,7 @@ export default function HomeScreen() {
                     <View style={{justifyContent: "center", alignItems: "center"}}>
                         <Text style={styles.label}>Rendimento Total</Text>
                         <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRGB})`, fontSize: 22 }]}>
-                            {}
+                            {doneIncomesTotalAmount - doneOutcomesTotalAmount}
                         </Text>
                     </View>
 
@@ -60,7 +67,9 @@ export default function HomeScreen() {
                             </View>
                             <View>
                                 <Text style={styles.label}>ganhos</Text>
-                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRGB})` }]}>{}</Text>
+                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRGB})` }]}>
+                                    {doneIncomesTotalAmount}
+                                </Text>
                             </View>
                         </TouchableOpacity>
 
@@ -71,7 +80,9 @@ export default function HomeScreen() {
                             </View>
                             <View>
                                 <Text style={styles.label}>despesas</Text>
-                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>{}</Text>
+                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>
+                                    {doneOutcomesTotalAmount}
+                                </Text>
                             </View>
                         </TouchableOpacity>
                     </View>
