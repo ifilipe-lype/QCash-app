@@ -7,7 +7,7 @@ import { AntDesign, Entypo } from '@expo/vector-icons';
 
 import { getWeekDayHourFormat, maxLengthOrDots } from "../../utils";
 
-export default function Entry({ data, isIncome }) {
+export default function Entry({ data, isIncome, onPress }) {
     const {
         description,
         created_at,
@@ -19,7 +19,7 @@ export default function Entry({ data, isIncome }) {
     let descriptionFormated = maxLengthOrDots(description, 63);
 
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={() => onPress(data)}>
             <View style={styles.body}>
                 <Text style={styles.creationDate}>{formatedDateStr}</Text>
                 <Text style={styles.description}>{descriptionFormated}</Text>

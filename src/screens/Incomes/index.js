@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Entypo, Feather } from '@expo/vector-icons';
@@ -17,7 +17,8 @@ import fakeData from "./fakeIncomesData";
 export default function IncomeScreen() {
 
     const [showAddEntryForm, setShowAddEntryForm] = useState(false);
-    const [showEntryDetails, setShowEntryDetails] = useState(true);
+    const [showEntryDetails, setShowEntryDetails] = useState(false);
+    const [selectedEntry, setSelectedEntry] = useState(null);
 
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
@@ -28,6 +29,11 @@ export default function IncomeScreen() {
 
     function toogleNotDoneVisibility() {
         setNotShowDoneEntries(!showNotDoneEntries);
+    }
+
+    function showEntryDetailsViewer(entry){
+        setShowEntryDetails(true);
+        setSelectedEntry(entry);
     }
 
     return (
@@ -59,7 +65,7 @@ export default function IncomeScreen() {
                 <FlatList
                     data={fakeData}
                     showsVerticalScrollIndicator={false}
-                    renderItem={({ item }) => <Entry isIncome={true} data={item} />}
+                    renderItem={({ item }) => <Entry onPress={showEntryDetailsViewer} isIncome={true} data={item} />}
                     keyExtractor={(item) => item.description}
                     ItemSeparatorComponent={
                         () => (
@@ -69,12 +75,16 @@ export default function IncomeScreen() {
                 />
             </View>
             <AddNewEntryForm isIncome show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
-            <EntryDetailsViewer
-                isIncome
-                show={showEntryDetails}
-                close={setShowEntryDetails}
-                entry={fakeData[0]}
-            />
+            {
+                selectedEntry && (
+                    <EntryDetailsViewer
+                        isIncome
+                        show={showEntryDetails}
+                        close={setShowEntryDetails}
+                        entry={selectedEntry}
+                    />
+                )
+            }
         </SafeAreaView>
     )
 }

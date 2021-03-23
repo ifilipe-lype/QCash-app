@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Entypo, Feather } from '@expo/vector-icons';
@@ -6,6 +6,7 @@ import { Entypo, Feather } from '@expo/vector-icons';
 import Entry from "../../components/Entry";
 import EntriesViewerFilter from "../../components/EntriesViewerFilter";
 import AddNewEntryForm from "../../components/AddNewEntryForm";
+import EntryDetailsViewer from "../../components/EntryDetailsViewer";
 
 import styles from "./styles";
 import { Colors } from "../../constants";
@@ -15,6 +16,8 @@ import fakeData from "./fakeOutcomesData";
 export default function OutcomeScreen() {
 
     const [showAddEntryForm, setShowAddEntryForm] = useState(false);
+    const [showEntryDetails, setShowEntryDetails] = useState(false);
+    const [selectedEntry, setSelectedEntry] = useState(null);
 
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
@@ -25,6 +28,11 @@ export default function OutcomeScreen() {
 
     function toogleNotDoneVisibility() {
         setNotShowDoneEntries(!showNotDoneEntries);
+    }
+
+    function showEntryDetailsViewer(entry) {
+        setShowEntryDetails(true);
+        setSelectedEntry(entry);
     }
 
     return (
@@ -55,16 +63,25 @@ export default function OutcomeScreen() {
                 <FlatList
                     data={fakeData}
                     showsVerticalScrollIndicator={false}
-                    renderItem={({ item }) => <Entry data={item} />}
+                    renderItem={({ item }) => <Entry onPress={showEntryDetailsViewer} data={item} />}
                     keyExtractor={(item) => item.description}
                     ItemSeparatorComponent={
                         () => (
-                        <View style={styles.entrySeparator}></View>
+                            <View style={styles.entrySeparator}></View>
                         )
                     }
                 />
             </View>
             <AddNewEntryForm show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
+            {
+                selectedEntry && (
+                    <EntryDetailsViewer
+                        show={showEntryDetails}
+                        close={setShowEntryDetails}
+                        entry={selectedEntry}
+                    />
+                )
+            }
         </SafeAreaView>
     )
 }
