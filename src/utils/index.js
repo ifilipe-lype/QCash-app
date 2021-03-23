@@ -33,3 +33,15 @@ export function calcTotalAmount(list){
 export function filterListBy(list, fieldName, value){
     return [...list].filter((item) => item[fieldName] === value);
 }
+
+export function getSeparatedIncomes(list){
+    const doneEntries = [];
+    const notDoneEntries = [];
+
+    for(let entry of list){
+        if(entry.done) doneEntries.push(entry);
+        else notDoneEntries.push(entry);
+    }
+
+    return [doneEntries, notDoneEntries];
+}
