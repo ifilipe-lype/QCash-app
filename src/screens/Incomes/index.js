@@ -6,6 +6,7 @@ import { Entypo, Feather } from '@expo/vector-icons';
 import Entry from "../../components/Entry";
 import EntriesViewerFilter from "../../components/EntriesViewerFilter";
 import AddNewEntryForm from "../../components/AddNewEntryForm";
+import EntryDetailsViewer from "../../components/EntryDetailsViewer";
 
 import { Colors } from "../../constants";
 
@@ -16,6 +17,7 @@ import fakeData from "./fakeIncomesData";
 export default function IncomeScreen() {
 
     const [showAddEntryForm, setShowAddEntryForm] = useState(false);
+    const [showEntryDetails, setShowEntryDetails] = useState(true);
 
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
@@ -67,6 +69,12 @@ export default function IncomeScreen() {
                 />
             </View>
             <AddNewEntryForm isIncome show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
+            <EntryDetailsViewer
+                isIncome
+                show={showEntryDetails}
+                close={setShowEntryDetails}
+                entry={fakeData[0]}
+            />
         </SafeAreaView>
     )
 }
