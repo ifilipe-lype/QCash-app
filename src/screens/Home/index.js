@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { AntDesign } from '@expo/vector-icons';
 import { View, Text, TouchableOpacity } from "react-native";
@@ -13,8 +13,6 @@ import styles from "./styles";
 
 
 export default function HomeScreen() {
-
-    const dispatch = useDispatch();
 
     const incomes = useSelector(store => store.incomes);
     const outcomes = useSelector(store => store.outcomes);
