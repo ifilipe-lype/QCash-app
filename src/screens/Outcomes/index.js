@@ -12,10 +12,16 @@ import EntryDetailsViewer from "../../components/EntryDetailsViewer";
 
 import styles from "./styles";
 import { Colors } from "../../constants";
+import { calcTotalAmount, getSeparatedIncomes } from "../../utils";
+
 
 export default function OutcomeScreen() {
 
     const outcomes = useSelector(store => store.outcomes);
+    const [doneOutcomes, notDoneOutcomes] = getSeparatedIncomes(outcomes);
+
+    const doneOutcomesTotalAmount = calcTotalAmount(doneOutcomes);
+    const notDoneOutcomesTotalAmount = calcTotalAmount(notDoneOutcomes);
 
     const [showAddEntryForm, setShowAddEntryForm] = useState(false);
     const [showEntryDetails, setShowEntryDetails] = useState(false);
@@ -57,6 +63,8 @@ export default function OutcomeScreen() {
 
             <View style={styles.entries}>
                 <EntriesViewerFilter
+                    doneEntriesAmount={doneOutcomesTotalAmount}
+                    notDoneEntriesAmout={notDoneOutcomesTotalAmount}
                     showDoneEntries={showDoneEntries}
                     showNotDoneEntries={showNotDoneEntries}
                     toogleDoneVisibility={toogleDoneVisibility}

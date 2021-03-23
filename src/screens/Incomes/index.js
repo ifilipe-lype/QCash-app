@@ -12,12 +12,18 @@ import AddNewEntryForm from "../../components/AddNewEntryForm";
 import EntryDetailsViewer from "../../components/EntryDetailsViewer";
 
 import { Colors } from "../../constants";
+import { calcTotalAmount, getSeparatedIncomes } from "../../utils";
+
 
 import styles from "./styles";
 
 export default function IncomeScreen() {
 
     const incomes = useSelector(store => store.incomes);
+    const [doneIncomes, notDoneIncomes] = getSeparatedIncomes(incomes);
+    
+    const doneIncomesTotalAmount = calcTotalAmount(doneIncomes);
+    const notDoneIncomesTotalAmount = calcTotalAmount(notDoneIncomes);
 
     const [showAddEntryForm, setShowAddEntryForm] = useState(false);
     const [showEntryDetails, setShowEntryDetails] = useState(false);
@@ -60,6 +66,8 @@ export default function IncomeScreen() {
             <View style={styles.entries}>
                 <EntriesViewerFilter
                     isIncome
+                    doneEntriesAmount={doneIncomesTotalAmount}
+                    notDoneEntriesAmout={notDoneIncomesTotalAmount}
                     showDoneEntries={showDoneEntries}
                     showNotDoneEntries={showNotDoneEntries}
                     toogleDoneVisibility={toogleDoneVisibility}
