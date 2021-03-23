@@ -18,6 +18,8 @@ import { calcTotalAmount, getSeparatedIncomes } from "../../utils";
 export default function OutcomeScreen() {
 
     const outcomes = useSelector(store => store.outcomes);
+    const [entriesToShow, setEntriesToShow] = useState(outcomes)
+
     const [doneOutcomes, notDoneOutcomes] = getSeparatedIncomes(outcomes);
 
     const doneOutcomesTotalAmount = calcTotalAmount(doneOutcomes);
@@ -32,15 +34,29 @@ export default function OutcomeScreen() {
 
     function toogleDoneVisibility() {
         setShowDoneEntries(!showDoneEntries);
+        filterEntriesToShow(!showDoneEntries, showNotDoneEntries)
     }
 
     function toogleNotDoneVisibility() {
         setNotShowDoneEntries(!showNotDoneEntries);
+        filterEntriesToShow(showDoneEntries, !showNotDoneEntries);
     }
 
     function showEntryDetailsViewer(entry) {
         setShowEntryDetails(true);
         setSelectedEntry(entry);
+    }
+
+    function filterEntriesToShow(showDoneEntries, showNotDoneEntries){
+        if(showDoneEntries && showNotDoneEntries){
+            setEntriesToShow(outcomes);
+        } else if(!showDoneEntries && showNotDoneEntries){
+            setEntriesToShow(notDoneOutcomes);
+        } else if(showDoneEntries && !showNotDoneEntries){
+            setEntriesToShow(doneOutcomes);
+        } else {
+            setEntriesToShow([])
+        }
     }
 
     return (
@@ -71,7 +87,7 @@ export default function OutcomeScreen() {
                     toogleNotDoneVisibility={toogleNotDoneVisibility}
                 />
                 <FlatList
-                    data={outcomes}
+                    data={entriesToShow}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item }) => <Entry onPress={showEntryDetailsViewer} data={item} />}
                     keyExtractor={(item) => item.id}
