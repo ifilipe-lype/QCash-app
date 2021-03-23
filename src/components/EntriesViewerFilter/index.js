@@ -10,8 +10,13 @@ export default function EntriesViewerFilter({
     showDoneEntries,
     showNotDoneEntries,
     toogleDoneVisibility,
-    toogleNotDoneVisibility
+    toogleNotDoneVisibility,
+
+    doneEntriesAmount,
+    notDoneEntriesAmout,
 }) {
+
+    console.log(doneEntriesAmount, notDoneEntriesAmout)
 
     return (
         <View style={styles.container(isIncome)}>
@@ -27,7 +32,7 @@ export default function EntriesViewerFilter({
                     marginLeft: 6
                 }}>
                     <Text style={styles.label}>Efetuados</Text>
-                    <Text style={styles.amount}>645,000 kz</Text>
+                    <Text style={styles.amount}>{doneEntriesAmount}</Text>
                 </View>
             </TouchableOpacity>
 
@@ -43,7 +48,7 @@ export default function EntriesViewerFilter({
                     marginLeft: 6
                 }}>
                     <Text style={styles.label}>Por efetuar</Text>
-                    <Text style={styles.amount}>145,000 kz</Text>
+                    <Text style={styles.amount}>{notDoneEntriesAmout}</Text>
                 </View>
             </TouchableOpacity>
         </View>
