@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import initialValue from "./initial-states";
+
 const incomesReducer = createSlice({
     name: "incomes",
-    initialState: [],
+    initialState: [...initialValue.incomes],
     reducers: {}
 });
-
-export const { insertOne, makeDone } = incomesReducer.actions;
 
 export default incomesReducer.reducer;
