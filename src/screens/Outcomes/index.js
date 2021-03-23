@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useSelector } from "react-redux";
+
 import { Entypo, Feather } from '@expo/vector-icons';
 
 import Entry from "../../components/Entry";
@@ -11,9 +13,9 @@ import EntryDetailsViewer from "../../components/EntryDetailsViewer";
 import styles from "./styles";
 import { Colors } from "../../constants";
 
-import fakeData from "./fakeOutcomesData";
-
 export default function OutcomeScreen() {
+
+    const outcomes = useSelector(store => store.outcomes);
 
     const [showAddEntryForm, setShowAddEntryForm] = useState(false);
     const [showEntryDetails, setShowEntryDetails] = useState(false);
@@ -61,10 +63,10 @@ export default function OutcomeScreen() {
                     toogleNotDoneVisibility={toogleNotDoneVisibility}
                 />
                 <FlatList
-                    data={fakeData}
+                    data={outcomes}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item }) => <Entry onPress={showEntryDetailsViewer} data={item} />}
-                    keyExtractor={(item) => item.description}
+                    keyExtractor={(item) => item.id}
                     ItemSeparatorComponent={
                         () => (
                             <View style={styles.entrySeparator}></View>

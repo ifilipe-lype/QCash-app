@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { useSelector } from "react-redux";
+
 import { Entypo, Feather } from '@expo/vector-icons';
 
 import Entry from "../../components/Entry";
@@ -12,9 +15,9 @@ import { Colors } from "../../constants";
 
 import styles from "./styles";
 
-import fakeData from "./fakeIncomesData";
-
 export default function IncomeScreen() {
+
+    const incomes = useSelector(store => store.incomes);
 
     const [showAddEntryForm, setShowAddEntryForm] = useState(false);
     const [showEntryDetails, setShowEntryDetails] = useState(false);
@@ -63,10 +66,10 @@ export default function IncomeScreen() {
                     toogleNotDoneVisibility={toogleNotDoneVisibility}
                 />
                 <FlatList
-                    data={fakeData}
+                    data={incomes}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item }) => <Entry onPress={showEntryDetailsViewer} isIncome={true} data={item} />}
-                    keyExtractor={(item) => item.description}
+                    keyExtractor={(item) => item.id}
                     ItemSeparatorComponent={
                         () => (
                         <View style={styles.entrySeparator}></View>
