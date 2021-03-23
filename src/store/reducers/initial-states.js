@@ -14,7 +14,7 @@ export default Object.freeze({
             id: uuid(),
             sheet: sheet_id,
             description: "ganho #1",
-            amount: "1250",
+            amount: "4250",
             done: true,
             done_at: "01/12/2021",
             created_at: "12/12/2020"
