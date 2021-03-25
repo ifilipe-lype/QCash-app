@@ -90,7 +90,7 @@ export default function IncomeScreen() {
                 </View>
             </View>
 
-            <View style={styles.entries}>
+            <View style={{ paddingHorizontal: 8 }}>
                 <EntriesViewerFilter
                     isIncome
                     doneEntriesAmount={doneIncomesTotalAmount}
@@ -100,19 +100,38 @@ export default function IncomeScreen() {
                     toogleDoneVisibility={toogleDoneVisibility}
                     toogleNotDoneVisibility={toogleNotDoneVisibility}
                 />
-                <FlatList
-                    data={entriesToShow}
-                    showsVerticalScrollIndicator={false}
-                    renderItem={({ item }) => <Entry onPress={showEntryDetailsViewer} isIncome={true} data={item} />}
-                    keyExtractor={(item) => item.id}
-                    ItemSeparatorComponent={
-                        () => (
-                        <View style={styles.entrySeparator}></View>
-                        )
-                    }
-                    extraData={entriesToShow}
-                />
             </View>
+            {
+                entriesToShow.length ? (
+                    <View style={styles.entries}>
+                        <FlatList
+                            data={entriesToShow}
+                            showsVerticalScrollIndicator={false}
+                            renderItem={({ item }) => <Entry isIncome onPress={showEntryDetailsViewer} data={item} />}
+                            keyExtractor={(item) => item.id}
+                            ItemSeparatorComponent={
+                                () => (
+                                    <View style={styles.entrySeparator}></View>
+                                )
+                            }
+                            extraData={entriesToShow}
+                        />
+                    </View>
+                ) : (
+                    <View style={{
+                        flex: 1,
+                        flexDirection: "row",
+                        height: "100%",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        alignSelf: "center"
+                    }}>
+                        <Text>Sem ganhos, clique no</Text>
+                        <Entypo style={{ marginHorizontal: 8 }} name="add-to-list" size={24} color={`rgb(${Colors.greenRGB})`} />
+                        <Text>para adicionar</Text>
+                    </View>
+                )
+            }
             <AddNewEntryForm saveEntry={saveEntry} isIncome show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
             {
                 selectedEntry && (
