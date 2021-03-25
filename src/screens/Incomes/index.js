@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { Entypo, Feather } from '@expo/vector-icons';
 
@@ -13,11 +13,14 @@ import EntryDetailsViewer from "../../components/EntryDetailsViewer";
 
 import { Colors } from "../../constants";
 import { calcTotalAmount, getSeparatedIncomes } from "../../utils";
+import { addIncome } from "../../store/reducers/incomes";
 
 
 import styles from "./styles";
 
 export default function IncomeScreen() {
+
+    const dispatch = useDispatch();
 
     const incomes = useSelector(store => store.incomes);
     const [doneIncomes, notDoneIncomes] = getSeparatedIncomes(incomes);
@@ -33,6 +36,10 @@ export default function IncomeScreen() {
 
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
+
+    function saveEntry(entry){
+        dispatch(addIncome(entry));
+    }
 
     function toogleDoneVisibility() {
         setShowDoneEntries(!showDoneEntries);
@@ -60,6 +67,10 @@ export default function IncomeScreen() {
             setEntriesToShow([])
         }
     }
+
+    useEffect(() => {
+        filterEntriesToShow(showDoneEntries, showNotDoneEntries);
+    }, [incomes])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -99,9 +110,10 @@ export default function IncomeScreen() {
                         <View style={styles.entrySeparator}></View>
                         )
                     }
+                    extraData={entriesToShow}
                 />
             </View>
-            <AddNewEntryForm isIncome show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
+            <AddNewEntryForm saveEntry={saveEntry} isIncome show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
             {
                 selectedEntry && (
                     <EntryDetailsViewer
