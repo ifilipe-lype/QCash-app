@@ -9,16 +9,25 @@ import { Colors } from "../../constants";
 import FloatModal from "../FloatModal";
 import { AntDesign, Entypo } from '@expo/vector-icons';
 
-export default function AddNewEntry({ show, close, isIncome }) {
+export default function AddNewEntry({ show, close, isIncome, saveEntry }) {
 
     const [done, setDone] = useState(true);
     const { control, handleSubmit, errors } = useForm();
 
     const mainColor = isIncome ? Colors.greenRGB : Colors.redRGB;
 
-    function submitForm(data) {
-        console.log({ ...data, done });
-        close()
+    function submitForm(entry) {
+        let curDate = Date.now();
+
+        const newIncome = {
+            ...entry,
+            created_at: curDate,
+            done_at: done ? curDate : null,
+            done,
+        };
+
+        saveEntry(newIncome);
+        close();
         showMessage({
             message: "novo ganho adicionado com sucesso",
             type: "success",
