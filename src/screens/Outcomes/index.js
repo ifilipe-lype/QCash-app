@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { Entypo, Feather } from '@expo/vector-icons';
 
@@ -13,9 +13,12 @@ import EntryDetailsViewer from "../../components/EntryDetailsViewer";
 import styles from "./styles";
 import { Colors } from "../../constants";
 import { calcTotalAmount, getSeparatedIncomes } from "../../utils";
+import { addOutcome } from "../../store/reducers/outcomes";
 
 
 export default function OutcomeScreen() {
+
+    const dispatch = useDispatch();
 
     const outcomes = useSelector(store => store.outcomes);
     const [entriesToShow, setEntriesToShow] = useState(outcomes)
@@ -31,6 +34,10 @@ export default function OutcomeScreen() {
 
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
+
+    function saveEntry(outcome){
+        dispatch(addOutcome(outcome));
+    }
 
     function toogleDoneVisibility() {
         setShowDoneEntries(!showDoneEntries);
@@ -58,6 +65,10 @@ export default function OutcomeScreen() {
             setEntriesToShow([])
         }
     }
+
+    useEffect(() => {
+        filterEntriesToShow(showDoneEntries, showNotDoneEntries);
+    }, [outcomes])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -96,9 +107,10 @@ export default function OutcomeScreen() {
                             <View style={styles.entrySeparator}></View>
                         )
                     }
+                    extraData={entriesToShow}
                 />
             </View>
-            <AddNewEntryForm show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
+            <AddNewEntryForm saveEntry={saveEntry} show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
             {
                 selectedEntry && (
                     <EntryDetailsViewer
