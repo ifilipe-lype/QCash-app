@@ -3,14 +3,12 @@ import { v4 as uuid } from 'uuid';
 
 import { createSlice } from "@reduxjs/toolkit";
 
-import initialValue from "./initial-states";
-
 const incomesReducer = createSlice({
     name: "incomes",
-    initialState: [...initialValue.incomes],
+    initialState: [],
     reducers: {
-        addIncome: (state, { playload }) => {
-            const newIncome = { ...playload, id: uuid()}
+        addIncome: (state, { payload }) => {
+            const newIncome = { ...payload, id: uuid()}
             state.push(newIncome);
         }
     }
