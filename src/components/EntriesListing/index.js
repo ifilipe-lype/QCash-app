@@ -4,7 +4,7 @@ import { View, Text, FlatList } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 
 import Entry from "../Entry";
-import EntriesFilter from "../EntriesViewerFilter";
+import EntriesFilter from "../EntriesFilter";
 import { Colors } from "../../constants";
 
 import styles from "./styles";
