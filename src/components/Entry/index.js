@@ -28,9 +28,9 @@ export default function Entry({ data, isIncome, onPress }) {
                 <Text style={styles.amount(isIncome)}>{amount}</Text>
                 {
                     done ? (
-                        <AntDesign name="checkcircle" size={14} style={styles.doneIcon(isIncome)} />
+                        <AntDesign name="checkcircle" size={14} style={styles.doneIcon} />
                     ) : (
-                        <Entypo name="pin" size={14} color="rgba(0,0,0, .35)" />
+                        <Entypo name="pin" size={14} style={styles.pinnedIcon} />
                     )
                 }
             </View>

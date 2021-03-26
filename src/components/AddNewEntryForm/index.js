@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { showMessage } from "react-native-flash-message";
 
 import styles from "./styles";
@@ -88,14 +88,14 @@ export default function AddNewEntry({ show, close, isIncome, saveEntry }) {
                                 style={[styles.choice, { borderRightWidth: 1, borderColor: "rgba(0,0,0, .08)" }]}
                             >
                                 <Text>Efetuado</Text>
-                                <AntDesign name="checkcircle" color={done ? `rgb(${mainColor})` : "rgba(0,0,0, .15)"} size={16} style={styles.icon} />
+                                <AntDesign name="checkcircle" color={done ? `rgb(${Colors.greenRGB})` : "rgba(0,0,0, .15)"} size={16} style={styles.icon} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => setDone(false)}
                                 style={styles.choice}
                             >
                                 <Text>Por efetuar</Text>
-                                <Entypo name="pin" size={16} color={!done ? `rgb(${mainColor})` : "rgba(0,0,0, .15)"} style={styles.icon} />
+                                <Entypo name="pin" size={16} color={!done ? `rgb(${Colors.redRGB})` : "rgba(0,0,0, .15)"} style={styles.icon} />
                             </TouchableOpacity>
                         </View>
                     </View>

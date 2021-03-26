@@ -1,20 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import { View, Text, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 import styles from "./styles";
+import { calcTotalAmount, getSeparatedIncomes } from "../../utils";
 
-export default function EntriesViewerFilter({
+export default function EntriesFilter({
     isIncome,
-    showDoneEntries,
-    showNotDoneEntries,
-    toogleDoneVisibility,
-    toogleNotDoneVisibility,
-
-    doneEntriesAmount,
-    notDoneEntriesAmout,
+    entries,
+    setEntriesToShow
 }) {
+
+    const [doneEntries, notDoneEntries] = getSeparatedIncomes(entries);
+
+    const doneEntriesAmount = calcTotalAmount(doneEntries);
+    const notDoneEntriesAmount = calcTotalAmount(notDoneEntries);
+
+
+    const [showDoneEntries, setShowDoneEntries] = useState(true);
+    const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
+
+    function toogleDoneVisibility() {
+        setShowDoneEntries(!showDoneEntries);
+        filterEntriesToShow(!showDoneEntries, showNotDoneEntries)
+    }
+
+    function toogleNotDoneVisibility() {
+        setNotShowDoneEntries(!showNotDoneEntries);
+        filterEntriesToShow(showDoneEntries, !showNotDoneEntries);
+    }
+
+
+    function filterEntriesToShow(showDoneEntries, showNotDoneEntries) {
+        if (showDoneEntries && showNotDoneEntries) {
+            setEntriesToShow(entries);
+        } else if (!showDoneEntries && showNotDoneEntries) {
+            setEntriesToShow(notDoneEntries);
+        } else if (showDoneEntries && !showNotDoneEntries) {
+            setEntriesToShow(doneEntries);
+        } else {
+            setEntriesToShow([])
+        }
+    }
+
+    useEffect(() => {
+        filterEntriesToShow(showDoneEntries, showNotDoneEntries);
+    }, [entries])
 
     return (
         <View style={styles.container(isIncome)}>
@@ -46,7 +79,7 @@ export default function EntriesViewerFilter({
                     marginLeft: 6
                 }}>
                     <Text style={styles.label}>Por efetuar</Text>
-                    <Text style={styles.amount}>{notDoneEntriesAmout}</Text>
+                    <Text style={styles.amount}>{notDoneEntriesAmount}</Text>
                 </View>
             </TouchableOpacity>
         </View>

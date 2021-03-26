@@ -29,7 +29,10 @@ export default StyleSheet.create({
         color: `rgb(${isIncome ? Colors.greenRGB : Colors.redRGB})`,
         marginRight: 12
     }),
-    doneIcon: (isIncome) => ({
-        color: `rgb(${isIncome ? Colors.greenRGB : Colors.redRGB})`
-    })
+    doneIcon: {
+        color: `rgb(${Colors.greenRGB})`
+    },
+    pinnedIcon: {
+        color: `rgb(${Colors.redRGB})`
+    }
 });
