@@ -28,7 +28,7 @@ export default function EntriesListing({ isIncome, entries, selectEntry }) {
                         <FlatList
                             data={entriesToShow}
                             showsVerticalScrollIndicator={false}
-                            renderItem={({ item }) => <Entry isIncome onPress={selectEntry} data={item} />}
+                            renderItem={({ item }) => <Entry isIncome={isIncome} onPress={selectEntry} data={item} />}
                             keyExtractor={(item) => item.id}
                             ItemSeparatorComponent={
                                 () => (
