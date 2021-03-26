@@ -4,7 +4,7 @@ import { View, Text, FlatList } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 
 import Entry from "../Entry";
-import EntriesViewerFilter from "../EntriesViewerFilter";
+import EntriesFilter from "../EntriesViewerFilter";
 import { Colors } from "../../constants";
 
 import styles from "./styles";
@@ -16,7 +16,7 @@ export default function EntriesListing({ isIncome, entries, selectEntry }) {
     return (
         <View style={styles.container}>
             <View style={{ paddingHorizontal: 8 }}>
-                <EntriesViewerFilter
+                <EntriesFilter
                     isIncome={isIncome}
                     entries={entries}
                     setEntriesToShow={setEntriesToShow}
