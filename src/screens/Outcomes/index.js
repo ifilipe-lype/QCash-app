@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { Entypo, Feather } from '@expo/vector-icons';
-
+import EntriesScreenHeader from "../../components/EntriesScreenHeader";
 import EntriesListing from "../../components/EntriesListing";
 import AddNewEntryForm from "../../components/AddNewEntryForm";
 import EntryDetailsViewer from "../../components/EntryDetailsViewer";
 
-import { Colors } from "../../constants";
 import { addOutcome } from "../../store/reducers/outcomes";
 
 
@@ -37,21 +34,10 @@ export default function IncomeScreen() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.screenLabel}>Despesas de Março, 2021</Text>
-
-                <View style={styles.headerRightActions}>
-                    <TouchableOpacity style={styles.headerAction}>
-                        <Feather name="search" size={20} color="rgba(0,0,0, .35)" />
-                    </TouchableOpacity>
-                    <TouchableOpacity  
-                        style={[styles.headerAction, { paddingRight: 0 }]}
-                        onPress={() => setShowAddEntryForm(true)}    
-                    >
-                        <Entypo name="add-to-list" size={24} color={`rgb(${Colors.redRGB})`} />
-                    </TouchableOpacity>
-                </View>
-            </View>
+            <EntriesScreenHeader
+                title={"Despesas de Março, 2021"}
+                setShowAddEntryForm={setShowAddEntryForm}
+            />
             
             <EntriesListing
                 entries={outcomes}
