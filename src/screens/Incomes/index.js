@@ -46,7 +46,13 @@ export default function IncomeScreen() {
                 selectEntry={selectEntry}
             />
 
-            <AddNewEntryForm saveEntry={saveEntry} isIncome show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
+            <AddNewEntryForm
+                isIncome
+                show={showAddEntryForm}
+                saveEntry={saveEntry}
+                close={() => setShowAddEntryForm(false)}
+            />
+
             {
                 selectedEntry && (
                     <EntryDetailsViewer
