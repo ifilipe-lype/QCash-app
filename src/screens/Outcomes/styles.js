@@ -26,14 +26,5 @@ export default StyleSheet.create({
     headerAction: {
         paddingHorizontal: 12,
         paddingVertical: 8,
-    },
-    entries: {
-        backgroundColor: "white",
-        paddingHorizontal: 8,
-        paddingBottom: 100,
-    },
-    entrySeparator: {
-        height: 1,
-        backgroundColor: "rgba(0,0,0, .05)"
     }
 });
