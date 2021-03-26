@@ -1,11 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import 'react-native-get-random-values';
+import { v4 as uuid } from 'uuid';
 
-import initialValue from "./initial-states";
+import { createSlice } from "@reduxjs/toolkit";
 
 const outcomesReducer = createSlice({
     name: "outcomes",
-    initialState: [...initialValue.outcomes],
-    reducers: {}
+    initialState: [],
+    reducers: {
+        addOutcome: (state, { payload }) => {
+            const newOutcome = { ...payload, id: uuid()}
+            state.push(newOutcome);
+        }
+    }
 });
+
+export const { addOutcome } = outcomesReducer.actions;
 
 export default outcomesReducer.reducer;

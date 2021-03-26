@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { Entypo, Feather } from '@expo/vector-icons';
 
@@ -13,9 +13,12 @@ import EntryDetailsViewer from "../../components/EntryDetailsViewer";
 import styles from "./styles";
 import { Colors } from "../../constants";
 import { calcTotalAmount, getSeparatedIncomes } from "../../utils";
+import { addOutcome } from "../../store/reducers/outcomes";
 
 
 export default function OutcomeScreen() {
+
+    const dispatch = useDispatch();
 
     const outcomes = useSelector(store => store.outcomes);
     const [entriesToShow, setEntriesToShow] = useState(outcomes)
@@ -32,6 +35,10 @@ export default function OutcomeScreen() {
     const [showDoneEntries, setShowDoneEntries] = useState(true);
     const [showNotDoneEntries, setNotShowDoneEntries] = useState(true);
 
+    function saveEntry(outcome) {
+        dispatch(addOutcome(outcome));
+    }
+
     function toogleDoneVisibility() {
         setShowDoneEntries(!showDoneEntries);
         filterEntriesToShow(!showDoneEntries, showNotDoneEntries)
@@ -47,17 +54,21 @@ export default function OutcomeScreen() {
         setSelectedEntry(entry);
     }
 
-    function filterEntriesToShow(showDoneEntries, showNotDoneEntries){
-        if(showDoneEntries && showNotDoneEntries){
+    function filterEntriesToShow(showDoneEntries, showNotDoneEntries) {
+        if (showDoneEntries && showNotDoneEntries) {
             setEntriesToShow(outcomes);
-        } else if(!showDoneEntries && showNotDoneEntries){
+        } else if (!showDoneEntries && showNotDoneEntries) {
             setEntriesToShow(notDoneOutcomes);
-        } else if(showDoneEntries && !showNotDoneEntries){
+        } else if (showDoneEntries && !showNotDoneEntries) {
             setEntriesToShow(doneOutcomes);
         } else {
             setEntriesToShow([])
         }
     }
+
+    useEffect(() => {
+        filterEntriesToShow(showDoneEntries, showNotDoneEntries);
+    }, [outcomes])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -76,8 +87,7 @@ export default function OutcomeScreen() {
                     </TouchableOpacity>
                 </View>
             </View>
-
-            <View style={styles.entries}>
+            <View style={{ paddingHorizontal: 8 }}>
                 <EntriesViewerFilter
                     doneEntriesAmount={doneOutcomesTotalAmount}
                     notDoneEntriesAmout={notDoneOutcomesTotalAmount}
@@ -86,19 +96,39 @@ export default function OutcomeScreen() {
                     toogleDoneVisibility={toogleDoneVisibility}
                     toogleNotDoneVisibility={toogleNotDoneVisibility}
                 />
-                <FlatList
-                    data={entriesToShow}
-                    showsVerticalScrollIndicator={false}
-                    renderItem={({ item }) => <Entry onPress={showEntryDetailsViewer} data={item} />}
-                    keyExtractor={(item) => item.id}
-                    ItemSeparatorComponent={
-                        () => (
-                            <View style={styles.entrySeparator}></View>
-                        )
-                    }
-                />
             </View>
-            <AddNewEntryForm show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
+            {
+                entriesToShow.length ? (
+                    <View style={styles.entries}>
+                        <FlatList
+                            data={entriesToShow}
+                            showsVerticalScrollIndicator={false}
+                            renderItem={({ item }) => <Entry onPress={showEntryDetailsViewer} data={item} />}
+                            keyExtractor={(item) => item.id}
+                            ItemSeparatorComponent={
+                                () => (
+                                    <View style={styles.entrySeparator}></View>
+                                )
+                            }
+                            extraData={entriesToShow}
+                        />
+                    </View>
+                ) : (
+                    <View style={{
+                        flex: 1,
+                        flexDirection: "row",
+                        height: "100%",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        alignSelf: "center"
+                    }}>
+                        <Text>Sem despesas, clique no</Text>
+                        <Entypo style={{ marginHorizontal: 8 }} name="add-to-list" size={24} color={`rgb(${Colors.redRGB})`} />
+                        <Text>para adicionar</Text>
+                    </View>
+                )
+            }
+            <AddNewEntryForm saveEntry={saveEntry} show={showAddEntryForm} close={() => setShowAddEntryForm(false)} />
             {
                 selectedEntry && (
                     <EntryDetailsViewer
