@@ -18,7 +18,7 @@ import {
 import { Colors } from "../../constants";
 import { getDayMonthYearFormat } from "../../utils";
 
-export default function AddNewEntry({ show, close, isIncome, entry, markEntryAsDone }) {
+export default function AddNewEntry({ show, close, isIncome, entry, markEntryAsDone, edit }) {
 
     const {
         done,
@@ -37,7 +37,11 @@ export default function AddNewEntry({ show, close, isIncome, entry, markEntryAsD
             type: "info",
             duration: 3000
         });
-        
+    }
+
+    function editEntry(){
+        close();
+        setTimeout(edit, 50);
     }
 
     return (
@@ -115,7 +119,9 @@ export default function AddNewEntry({ show, close, isIncome, entry, markEntryAsD
                 </View>
 
                 <View style={styles.footer}>
-                    <TouchableOpacity style={styles.editBtn(mainColor)}>
+                    <TouchableOpacity style={styles.editBtn(mainColor)}
+                        onPress={() => editEntry(entry)}
+                    >
                         <Text style={{
                             fontSize: 18,
                             color: "white"
