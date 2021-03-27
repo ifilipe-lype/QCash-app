@@ -3,9 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 
 import { Entypo, Feather } from '@expo/vector-icons';
 
-
 import { Colors } from "../../constants";
-
 
 import styles from "./styles";
 
