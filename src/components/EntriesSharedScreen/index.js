@@ -13,7 +13,8 @@ export default function EntriesSharedScreen({
     entries,
     saveEntry,
     markEntryAsDone,
-    updateEntry
+    updateEntry,
+    deleteEntry
 }) {
 
     const [showAddEntryForm, setShowAddEntryForm] = useState(false);
@@ -71,6 +72,7 @@ export default function EntriesSharedScreen({
                             show={showEntryEditor}
                             entry={selectedEntry}
                             updateEntry={updateEntry}
+                            deleteEntry={deleteEntry}
                             close={() => setShowEntryEditor(false)}
                         />
                     </>
