@@ -8,10 +8,13 @@ export default StyleSheet.create({
         overflow: "hidden"
     },
     header:(isIncome) => ({
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
         borderBottomWidth: 2,
         borderColor: isIncome ? `rgb(${Colors.greenRGB})` : `rgb(${Colors.redRGB})`,
         paddingVertical: 24,
-        paddingHorizontal: 12
+        paddingHorizontal: 16
     }),
     title: {
         fontSize: 20,

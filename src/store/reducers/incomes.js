@@ -34,10 +34,14 @@ const incomesReducer = createSlice({
                     break;
                 }
             }
+        },
+        deleteIncome: (state, { payload }) => {
+            const incomeToDeleteIndex = state.findIndex(entry => entry.id === payload.id);
+            state.splice(incomeToDeleteIndex, 1);
         }
     }
 });
 
-export const { addIncome, makeIncomeDone, updateIncome } = incomesReducer.actions;
+export const { addIncome, makeIncomeDone, updateIncome, deleteIncome } = incomesReducer.actions;
 
 export default incomesReducer.reducer;

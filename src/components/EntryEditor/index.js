@@ -2,15 +2,24 @@ import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { showMessage } from "react-native-flash-message";
+import Dialog from "react-native-dialog";
 
 import styles from "./styles";
 import { Colors } from "../../constants";
 
 import FloatModal from "../FloatModal";
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons';
 
-export default function EntryEditor({ show, close, isIncome, entry, updateEntry }) {
+export default function EntryEditor({
+    show,
+    close,
+    isIncome,
+    entry,
+    updateEntry,
+    deleteEntry
+}) {
 
+    const [showConfirmDeleteDialog, setShowConfirmDeleteDialog] = useState(false)
     const [done, setDone] = useState(entry.done);
     const { control, handleSubmit, errors } = useForm();
 
@@ -35,11 +44,27 @@ export default function EntryEditor({ show, close, isIncome, entry, updateEntry 
         });
     }
 
+    function deleteEntryHelper(){
+        deleteEntry(entry);
+        setShowConfirmDeleteDialog(false)
+        close();
+        showMessage({
+            message: `Remoção de ${isIncome ? "Ganho" : "Despesa"}`,
+            description: `${isIncome ? "ganho" : "despesa"} removid${isIncome ? "o" : "a"} com sucesso`,
+            type: "success",
+            icon: "auto",
+            duration: 3000
+        });
+    }
+
     return (
         <FloatModal show={show} close={close}>
             <View style={styles.container}>
                 <View style={styles.header(isIncome)}>
-                    <Text style={[styles.title, { color: `rgb(${mainColor})` }]}>Alterar { isIncome ? "Ganho" : "Despesa" }</Text>
+                    <Text style={[styles.title, { color: `rgb(${mainColor})` }]}>Alterar {isIncome ? "Ganho" : "Despesa"}</Text>
+                    <TouchableOpacity onPress={() => setShowConfirmDeleteDialog(true)}>
+                        <Ionicons name="md-trash-outline" size={24} color={`rgb(${Colors.redRGB})`} />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.formBody}>
                     <View style={styles.inputGroup}>
@@ -107,7 +132,28 @@ export default function EntryEditor({ show, close, isIncome, entry, updateEntry 
                         <AntDesign name="checkcircle" size={48} color={`rgb(${mainColor})`} />
                     </TouchableOpacity>
                 </View>
+                <ConfirmDeleteDialog
+                    show={showConfirmDeleteDialog}
+                    title={`Remover ${isIncome ? "Ganho" : "Despesa"}`}
+                    description={`Deseja remover ${isIncome ? "ganho" : "despesa"} ? essa ação não poder ser disfeita.`}
+                    mainColor={`rgb(${mainColor})`}
+                    cancel={() => setShowConfirmDeleteDialog(false)}
+                    confirm={deleteEntryHelper}
+                />
             </View>
         </FloatModal>
+    )
+}
+
+function ConfirmDeleteDialog({ mainColor, show, description, title, cancel, confirm}) {
+    return (
+        <Dialog.Container visible={show}>
+            <Dialog.Title style={{color: mainColor}}>{title}</Dialog.Title>
+            <Dialog.Description>
+                {description}
+            </Dialog.Description>
+            <Dialog.Button onPress={cancel} style={{color: "rgba(0,0,0, .45)"}} label="Cancelar" />
+            <Dialog.Button style={{color: mainColor}} onPress={confirm} label="Apagar" />
+        </Dialog.Container>
     )
 }

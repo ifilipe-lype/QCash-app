@@ -14,9 +14,9 @@ export default function EntriesScreenHeader({ isIncome ,title, setShowAddEntryFo
             <Text style={styles.screenLabel}>{title}</Text>
 
             <View style={styles.headerRightActions}>
-                <TouchableOpacity style={styles.headerAction}>
+                {/* <TouchableOpacity style={styles.headerAction}>
                     <Feather name="search" size={20} color="rgba(0,0,0, .35)" />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <TouchableOpacity
                     style={[styles.headerAction, { paddingRight: 0 }]}
                     onPress={() => setShowAddEntryForm(true)}
