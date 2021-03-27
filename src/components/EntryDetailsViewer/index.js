@@ -33,8 +33,10 @@ export default function AddNewEntry({ show, close, isIncome, entry, markEntryAsD
         markEntryAsDone(entry);
         close();
         showMessage({
-            message: `${isIncome ? "Ganho" : "Despesa"} efetuado com sucesso.`,
+            message: `Efetuamento de ${isIncome ? "Ganho" : "Despesa"}`,
+            description: `${isIncome ? "Ganho" : "Despesa"} efetuad${isIncome ? "o" : "a"} com sucesso`,
             type: "info",
+            icon: "auto",
             duration: 3000
         });
     }

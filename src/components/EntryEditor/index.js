@@ -27,8 +27,10 @@ export default function EntryEditor({ show, close, isIncome, entry, updateEntry 
         updateEntry(newIncome);
         close();
         showMessage({
-            message: `${isIncome ? "ganho" : "despesa"} alterado com sucesso`,
+            message: `Alteração de ${isIncome ? "Ganho" : "Despesa"}`,
+            description: `${isIncome ? "ganho" : "despesa"} alterad${isIncome ? "o" : "a"} com sucesso`,
             type: "info",
+            icon: "auto",
             duration: 3000
         });
     }

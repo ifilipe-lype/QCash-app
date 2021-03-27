@@ -29,8 +29,10 @@ export default function AddNewEntry({ show, close, isIncome, saveEntry }) {
         saveEntry(newIncome);
         close();
         showMessage({
-            message: `${isIncome ? "ganho" : "despesa"} adicionado com sucesso`,
+            message: `Registo de ${isIncome ? "Ganho" : "Despesa"}`,
+            description: `${isIncome ? "Ganho" : "Sespesa"} adicionad${isIncome ? "o" : "a"} com sucesso`,
             type: "success",
+            icon: "auto",
             duration: 3000
         });
     }
