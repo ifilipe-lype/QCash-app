@@ -3,11 +3,11 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "white",
     },
     entries: {
-        backgroundColor: "white",
+        flex: 1,
         paddingHorizontal: 8,
-        paddingBottom: 100,
     },
     entrySeparator: {
         height: 1,
