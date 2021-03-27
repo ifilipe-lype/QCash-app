@@ -10,10 +10,20 @@ const incomesReducer = createSlice({
         addIncome: (state, { payload }) => {
             const newIncome = { ...payload, id: uuid()}
             state.push(newIncome);
+        },
+        makeIncomeDone: (state, { payload }) => {
+            const { id } = payload;
+            
+            for(let income of state){
+                if(income.id === id){
+                    income.done = true;
+                    break;
+                }
+            }
         }
     }
 });
 
-export const { addIncome } = incomesReducer.actions;
+export const { addIncome, makeIncomeDone } = incomesReducer.actions;
 
 export default incomesReducer.reducer;

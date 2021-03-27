@@ -10,10 +10,20 @@ const outcomesReducer = createSlice({
         addOutcome: (state, { payload }) => {
             const newOutcome = { ...payload, id: uuid()}
             state.push(newOutcome);
+        },
+        makeOutcomeDone: (state, { payload }) => {
+            const { id } = payload;
+            
+            for(let outcome of state){
+                if(outcome.id === id){
+                    outcome.done = true;
+                    break;
+                }
+            }
         }
     }
 });
 
-export const { addOutcome } = outcomesReducer.actions;
+export const { addOutcome, makeOutcomeDone } = outcomesReducer.actions;
 
 export default outcomesReducer.reducer;

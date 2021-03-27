@@ -10,7 +10,8 @@ export default function EntriesSharedScreen({
     title,
     isIncome,
     entries,
-    saveEntry
+    saveEntry,
+    markEntryAsDone
 }) {
 
     const [showAddEntryForm, setShowAddEntryForm] = useState(false);
@@ -51,8 +52,9 @@ export default function EntriesSharedScreen({
                     <EntryDetailsViewer
                         isIncome={isIncome}
                         show={showEntryDetails}
-                        close={setShowEntryDetails}
+                        close={() => setShowEntryDetails(false)}
                         entry={selectedEntry}
+                        markEntryAsDone={markEntryAsDone}
                     />
                 )
             }
