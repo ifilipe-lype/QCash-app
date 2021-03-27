@@ -16,21 +16,19 @@ export default function EntryEditor({ show, close, isIncome, entry, updateEntry 
 
     const mainColor = isIncome ? Colors.greenRGB : Colors.redRGB;
 
-    function submitForm(entry) {
-        let curDate = Date.now();
-
+    function submitForm(entryFormValues) {
         const newIncome = {
-            ...entry,
-            created_at: curDate,
-            done_at: done ? curDate : null,
+            id: entry.id,
+            ...entryFormValues,
+            done_at: done ? Date.now() : null,
             done,
         };
 
         updateEntry(newIncome);
         close();
         showMessage({
-            message: "novo ganho adicionado com sucesso",
-            type: "success",
+            message: `${isIncome ? "ganho" : "despesa"} alterado com sucesso`,
+            type: "info",
             duration: 3000
         });
     }
