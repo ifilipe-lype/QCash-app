@@ -17,6 +17,20 @@ const incomesReducer = createSlice({
             for(let income of state){
                 if(income.id === id){
                     income.done = true;
+
+                    break;
+                }
+            }
+        },
+        updateIncome: (state, { payload }) => {
+            const { id } = payload;
+
+            for(let income of state){
+                if(income.id === id){
+                    income.description = payload.description;
+                    income.amount = payload.amount;
+                    income.done = payload.done;
+
                     break;
                 }
             }
@@ -24,6 +38,6 @@ const incomesReducer = createSlice({
     }
 });
 
-export const { addIncome, makeIncomeDone } = incomesReducer.actions;
+export const { addIncome, makeIncomeDone, updateIncome } = incomesReducer.actions;
 
 export default incomesReducer.reducer;
