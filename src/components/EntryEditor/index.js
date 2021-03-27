@@ -9,29 +9,27 @@ import { Colors } from "../../constants";
 import FloatModal from "../FloatModal";
 import { AntDesign, Entypo } from '@expo/vector-icons';
 
-export default function AddNewEntry({ show, close, isIncome, saveEntry }) {
+export default function EntryEditor({ show, close, isIncome, entry, updateEntry }) {
 
-    const [done, setDone] = useState(true);
+    const [done, setDone] = useState(entry.done);
     const { control, handleSubmit, errors } = useForm();
 
     const mainColor = isIncome ? Colors.greenRGB : Colors.redRGB;
 
-    function submitForm(entry) {
-        let curDate = Date.now();
-
+    function submitForm(entryFormValues) {
         const newIncome = {
-            ...entry,
-            created_at: curDate,
-            done_at: done ? curDate : null,
+            id: entry.id,
+            ...entryFormValues,
+            done_at: done ? Date.now() : null,
             done,
         };
 
-        saveEntry(newIncome);
+        updateEntry(newIncome);
         close();
         showMessage({
-            message: `Registo de ${isIncome ? "Ganho" : "Despesa"}`,
-            description: `${isIncome ? "Ganho" : "Sespesa"} adicionad${isIncome ? "o" : "a"} com sucesso`,
-            type: "success",
+            message: `Alteração de ${isIncome ? "Ganho" : "Despesa"}`,
+            description: `${isIncome ? "ganho" : "despesa"} alterad${isIncome ? "o" : "a"} com sucesso`,
+            type: "info",
             icon: "auto",
             duration: 3000
         });
@@ -41,7 +39,7 @@ export default function AddNewEntry({ show, close, isIncome, saveEntry }) {
         <FloatModal show={show} close={close}>
             <View style={styles.container}>
                 <View style={styles.header(isIncome)}>
-                    <Text style={[styles.title, { color: `rgb(${mainColor})` }]}>Adicionar { isIncome ? "Ganho" : "Despesa" }</Text>
+                    <Text style={[styles.title, { color: `rgb(${mainColor})` }]}>Alterar { isIncome ? "Ganho" : "Despesa" }</Text>
                 </View>
                 <View style={styles.formBody}>
                     <View style={styles.inputGroup}>
@@ -59,7 +57,7 @@ export default function AddNewEntry({ show, close, isIncome, saveEntry }) {
                             )}
                             name="description"
                             rules={{ required: true, minLength: 3 }}
-                            defaultValue=""
+                            defaultValue={entry.description}
                         />
                     </View>
 
@@ -79,7 +77,7 @@ export default function AddNewEntry({ show, close, isIncome, saveEntry }) {
                             )}
                             name="amount"
                             rules={{ required: true, min: 0 }}
-                            defaultValue=""
+                            defaultValue={entry.amount}
                         />
                     </View>
 

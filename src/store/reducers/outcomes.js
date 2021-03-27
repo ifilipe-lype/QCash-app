@@ -17,6 +17,20 @@ const outcomesReducer = createSlice({
             for(let outcome of state){
                 if(outcome.id === id){
                     outcome.done = true;
+                    
+                    break;
+                }
+            }
+        },
+        updateOutcome: (state, { payload }) => {
+            const { id } = payload;
+
+            for(let outcome of state){
+                if(outcome.id === id){
+                    outcome.description = payload.description;
+                    outcome.amount = payload.amount;
+                    outcome.done = payload.done;
+
                     break;
                 }
             }
@@ -24,6 +38,6 @@ const outcomesReducer = createSlice({
     }
 });
 
-export const { addOutcome, makeOutcomeDone } = outcomesReducer.actions;
+export const { addOutcome, makeOutcomeDone, updateOutcome } = outcomesReducer.actions;
 
 export default outcomesReducer.reducer;
