@@ -55,7 +55,7 @@ export default function RootTabbedNavigator() {
                 name="Outcomes"
                 component={OutcomeScreen}
             />
-            <Tabs.Screen
+            {/* <Tabs.Screen
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Feather name="more-horizontal" size={focused ? 28 : 24} color={focused ? `rgb(${Colors.blueRGB})` : `rgb(${Colors.grayRGB})`} />
@@ -63,7 +63,7 @@ export default function RootTabbedNavigator() {
                 }}
                 name="MenuBar"
                 component={MenuBar}
-            />
+            /> */}
         </Tabs.Navigator>
     )
 };
