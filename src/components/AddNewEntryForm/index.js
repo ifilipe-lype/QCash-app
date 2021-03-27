@@ -29,7 +29,7 @@ export default function AddNewEntry({ show, close, isIncome, saveEntry }) {
         saveEntry(newIncome);
         close();
         showMessage({
-            message: "novo ganho adicionado com sucesso",
+            message: `${isIncome ? "ganho" : "despesa"} adicionado com sucesso`,
             type: "success",
             duration: 3000
         });
