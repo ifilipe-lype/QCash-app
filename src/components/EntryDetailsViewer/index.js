@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
+import { showMessage } from "react-native-flash-message";
 
 import styles from "./styles";
 
@@ -17,7 +18,7 @@ import {
 import { Colors } from "../../constants";
 import { getDayMonthYearFormat } from "../../utils";
 
-export default function AddNewEntry({ show, close, isIncome, entry }) {
+export default function AddNewEntry({ show, close, isIncome, entry, markEntryAsDone }) {
 
     const {
         done,
@@ -27,6 +28,17 @@ export default function AddNewEntry({ show, close, isIncome, entry }) {
     } = entry;
 
     const mainColor = isIncome ? Colors.greenRGB : Colors.redRGB;
+
+    function makeEntryDone(entry){
+        markEntryAsDone(entry);
+        close();
+        showMessage({
+            message: `${isIncome ? "Ganho" : "Despesa"} efetuado com sucesso.`,
+            type: "info",
+            duration: 3000
+        });
+        
+    }
 
     return (
         <FloatModal show={show} close={close}>
@@ -111,7 +123,10 @@ export default function AddNewEntry({ show, close, isIncome, entry }) {
                     </TouchableOpacity>
                     {
                         !done && (
-                            <TouchableOpacity style={styles.makeDoneBtn(mainColor)}>
+                            <TouchableOpacity
+                                style={styles.makeDoneBtn(mainColor)}
+                                onPress={() => makeEntryDone(entry)}
+                            >
                                 <Text style={{
                                     fontSize: 18,
                                     color: `rgb(${mainColor})`
