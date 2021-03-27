@@ -34,10 +34,14 @@ const outcomesReducer = createSlice({
                     break;
                 }
             }
+        },
+        deleteOutcome: (state, { payload }) => {
+            const outcomeToDeleteIndex = state.findIndex(entry => entry.id === payload.id);
+            state.splice(outcomeToDeleteIndex, 1);
         }
     }
 });
 
-export const { addOutcome, makeOutcomeDone, updateOutcome } = outcomesReducer.actions;
+export const { addOutcome, makeOutcomeDone, updateOutcome, deleteOutcome } = outcomesReducer.actions;
 
 export default outcomesReducer.reducer;
