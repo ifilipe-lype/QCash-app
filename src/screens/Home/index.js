@@ -21,9 +21,10 @@ export default function HomeScreen() {
     const [doneOutcomes, notDoneOutcomes] = getSeparatedIncomes(outcomes);
 
     const doneIncomesTotalAmount = calcTotalAmount(doneIncomes);
+    const notDoneIncomesTotalAmount = calcTotalAmount(notDoneIncomes);
+
     const doneOutcomesTotalAmount = calcTotalAmount(doneOutcomes);
-
-
+    const notDoneOutcomesTotalAmount = calcTotalAmount(notDoneOutcomes);
 
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [activeMonth, setActiveMonth] = useState(2);
@@ -47,10 +48,10 @@ export default function HomeScreen() {
                     <AntDesign style={styles.datePickerBtnIcon} name="down" size={16} />
                 </TouchableOpacity>
 
-                <View style={{ width: "100%"}}>
+                <View style={{ width: "100%" }}>
                     {/* Total Month Gain */}
-                    <View style={{justifyContent: "center", alignItems: "center"}}>
-                        <Text style={styles.label}>Rendimento Total</Text>
+                    <View style={{ justifyContent: "center", alignItems: "center" }}>
+                        <Text style={styles.label}>Rendimento Atual</Text>
                         <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRGB})`, fontSize: 22 }]}>
                             {doneIncomesTotalAmount - doneOutcomesTotalAmount}
                         </Text>
@@ -73,13 +74,46 @@ export default function HomeScreen() {
 
                         {/* Outcomes Total */}
                         <TouchableOpacity style={styles.entryCard}>
-                            <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRGB})`}]}>
+                            <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRGB})` }]}>
                                 <AntDesign name="arrowdown" size={20} color="white" />
                             </View>
                             <View>
                                 <Text style={styles.label}>despesas</Text>
                                 <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>
                                     {doneOutcomesTotalAmount}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+
+            <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Por efetuar</Text>
+                <View style={styles.sectionBody}>
+                    <View style={styles.entriesResults}>
+                        {/* Incomes Total */}
+                        <TouchableOpacity style={styles.entryCard}>
+                            <View style={[styles.entryIcon, { backgroundColor: `rgba(${Colors.greenRGB}, .65)` }]}>
+                                <AntDesign name="arrowup" size={20} color="white" />
+                            </View>
+                            <View>
+                                <Text style={styles.label}>ganhos</Text>
+                                <Text style={[styles.cashLabel, { color: `rgba(${Colors.greenRGB}, .65)` }]}>
+                                    {notDoneIncomesTotalAmount}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+
+                        {/* Outcomes Total */}
+                        <TouchableOpacity style={styles.entryCard}>
+                            <View style={[styles.entryIcon, { backgroundColor: `rgba(${Colors.redRGB}, .65)` }]}>
+                                <AntDesign name="arrowdown" size={20} color="white" />
+                            </View>
+                            <View>
+                                <Text style={styles.label}>despesas</Text>
+                                <Text style={[styles.cashLabel, { color: `rgba(${Colors.redRGB}, .65)` }]}>
+                                    {notDoneOutcomesTotalAmount}
                                 </Text>
                             </View>
                         </TouchableOpacity>
