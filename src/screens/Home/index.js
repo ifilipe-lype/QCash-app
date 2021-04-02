@@ -48,7 +48,7 @@ export default function HomeScreen() {
                 <View style={{ width: "100%" }}>
                     {/* Total Month Gain */}
                     <View style={{ justifyContent: "center", alignItems: "center" }}>
-                        <Text style={styles.label}>Rendimento Total</Text>
+                        <Text style={styles.label}>Rendimento Atual</Text>
                         <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRGB})`, fontSize: 22 }]}>
                             {doneIncomesTotalAmount - doneOutcomesTotalAmount}
                         </Text>
