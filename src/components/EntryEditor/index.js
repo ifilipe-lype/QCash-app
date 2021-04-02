@@ -10,6 +10,8 @@ import { Colors } from "../../constants";
 import FloatModal from "../FloatModal";
 import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons';
 
+import { formatMoney } from "../../utils"
+
 export default function EntryEditor({
     show,
     close,
@@ -28,7 +30,8 @@ export default function EntryEditor({
     function submitForm(entryFormValues) {
         const newIncome = {
             id: entry.id,
-            ...entryFormValues,
+            description: entryFormValues.description,
+            amount: +entryFormValues.amount,
             done_at: done ? Date.now() : null,
             done,
         };
@@ -92,9 +95,9 @@ export default function EntryEditor({
                             control={control}
                             render={({ onChange, onBlur, value }) => (
                                 <TextInput
-                                    style={styles.input}
+                                    style={[styles.input, {fontSize: 18, color: `rgb(${mainColor})`}]}
                                     onBlur={onBlur}
-                                    onChangeText={value => onChange(value)}
+                                    onChangeText={newValue => onChange(newValue)}
                                     value={value}
                                     placeholder="Montante"
                                     keyboardType="decimal-pad"
@@ -102,7 +105,7 @@ export default function EntryEditor({
                             )}
                             name="amount"
                             rules={{ required: true, min: 0 }}
-                            defaultValue={entry.amount}
+                            defaultValue={entry.amount.toString()}
                         />
                     </View>
 

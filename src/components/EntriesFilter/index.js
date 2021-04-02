@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 import styles from "./styles";
-import { calcTotalAmount, getSeparatedIncomes } from "../../utils";
+import { calcTotalAmount, getSeparatedIncomes, formatMoney } from "../../utils";
 
 export default function EntriesFilter({
     isIncome,
@@ -63,7 +63,7 @@ export default function EntriesFilter({
                     marginLeft: 6
                 }}>
                     <Text style={styles.label}>Efetuados</Text>
-                    <Text style={styles.amount}>{doneEntriesAmount}</Text>
+                    <Text style={styles.amount}>{formatMoney(doneEntriesAmount)} kz</Text>
                 </View>
             </TouchableOpacity>
 
@@ -79,7 +79,7 @@ export default function EntriesFilter({
                     marginLeft: 6
                 }}>
                     <Text style={styles.label}>Por efetuar</Text>
-                    <Text style={styles.amount}>{notDoneEntriesAmount}</Text>
+                    <Text style={styles.amount}>{formatMoney(notDoneEntriesAmount)} kz</Text>
                 </View>
             </TouchableOpacity>
         </View>

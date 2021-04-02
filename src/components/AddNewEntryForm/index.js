@@ -20,7 +20,8 @@ export default function AddNewEntry({ show, close, isIncome, saveEntry }) {
         let curDate = Date.now();
 
         const newIncome = {
-            ...entry,
+            description: entry.description,
+            amount: +entry.amount,
             created_at: curDate,
             done_at: done ? curDate : null,
             done,
@@ -69,7 +70,7 @@ export default function AddNewEntry({ show, close, isIncome, saveEntry }) {
                             control={control}
                             render={({ onChange, onBlur, value }) => (
                                 <TextInput
-                                    style={styles.input}
+                                    style={[styles.input, {fontSize: 18, color: `rgb(${mainColor})`}]}
                                     onBlur={onBlur}
                                     onChangeText={value => onChange(value)}
                                     value={value}
