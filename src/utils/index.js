@@ -45,3 +45,7 @@ export function getSeparatedIncomes(list){
 
     return [doneEntries, notDoneEntries];
 }
+
+export function formatMoney(amount){
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
