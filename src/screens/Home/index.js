@@ -21,7 +21,10 @@ export default function HomeScreen() {
     const [doneOutcomes, notDoneOutcomes] = getSeparatedIncomes(outcomes);
 
     const doneIncomesTotalAmount = calcTotalAmount(doneIncomes);
+    const notDoneIncomesTotalAmount = calcTotalAmount(notDoneIncomes);
+
     const doneOutcomesTotalAmount = calcTotalAmount(doneOutcomes);
+    const notDoneOutcomesTotalAmount = calcTotalAmount(notDoneOutcomes);
 
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [activeMonth, setActiveMonth] = useState(2);
@@ -85,13 +88,9 @@ export default function HomeScreen() {
                 </View>
             </View>
 
-            <View style={{
-                paddingHorizontal: 8,
-                marginVertical: 24,
-                paddingVertical: 12
-            }}>
-                <Text style={{marginBottom: 8, color: "rgba(0,0,0, .45)"}}>Por efetuar</Text>
-                <View style={[styles.statusCard, {borderRadius: 20}]}>
+            <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Por efetuar</Text>
+                <View style={styles.sectionBody}>
                     <View style={styles.entriesResults}>
                         {/* Incomes Total */}
                         <TouchableOpacity style={styles.entryCard}>
@@ -101,7 +100,7 @@ export default function HomeScreen() {
                             <View>
                                 <Text style={styles.label}>ganhos</Text>
                                 <Text style={[styles.cashLabel, { color: `rgba(${Colors.greenRGB}, .65)` }]}>
-                                    {doneIncomesTotalAmount}
+                                    {notDoneIncomesTotalAmount}
                                 </Text>
                             </View>
                         </TouchableOpacity>
@@ -114,7 +113,7 @@ export default function HomeScreen() {
                             <View>
                                 <Text style={styles.label}>despesas</Text>
                                 <Text style={[styles.cashLabel, { color: `rgba(${Colors.redRGB}, .65)` }]}>
-                                    {doneOutcomesTotalAmount}
+                                    {notDoneOutcomesTotalAmount}
                                 </Text>
                             </View>
                         </TouchableOpacity>
