@@ -23,8 +23,6 @@ export default function HomeScreen() {
     const doneIncomesTotalAmount = calcTotalAmount(doneIncomes);
     const doneOutcomesTotalAmount = calcTotalAmount(doneOutcomes);
 
-
-
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [activeMonth, setActiveMonth] = useState(2);
     const [activeYear, setActiveYear] = useState(2021);
