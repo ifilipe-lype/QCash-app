@@ -45,9 +45,9 @@ export default function HomeScreen() {
                     <AntDesign style={styles.datePickerBtnIcon} name="down" size={16} />
                 </TouchableOpacity>
 
-                <View style={{ width: "100%"}}>
+                <View style={{ width: "100%" }}>
                     {/* Total Month Gain */}
-                    <View style={{justifyContent: "center", alignItems: "center"}}>
+                    <View style={{ justifyContent: "center", alignItems: "center" }}>
                         <Text style={styles.label}>Rendimento Total</Text>
                         <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRGB})`, fontSize: 22 }]}>
                             {doneIncomesTotalAmount - doneOutcomesTotalAmount}
@@ -71,12 +71,49 @@ export default function HomeScreen() {
 
                         {/* Outcomes Total */}
                         <TouchableOpacity style={styles.entryCard}>
-                            <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRGB})`}]}>
+                            <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRGB})` }]}>
                                 <AntDesign name="arrowdown" size={20} color="white" />
                             </View>
                             <View>
                                 <Text style={styles.label}>despesas</Text>
                                 <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>
+                                    {doneOutcomesTotalAmount}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+
+            <View style={{
+                paddingHorizontal: 8,
+                marginVertical: 24,
+                paddingVertical: 12
+            }}>
+                <Text style={{marginBottom: 8, color: "rgba(0,0,0, .45)"}}>Por efetuar</Text>
+                <View style={[styles.statusCard, {borderRadius: 20}]}>
+                    <View style={styles.entriesResults}>
+                        {/* Incomes Total */}
+                        <TouchableOpacity style={styles.entryCard}>
+                            <View style={[styles.entryIcon, { backgroundColor: `rgba(${Colors.greenRGB}, .65)` }]}>
+                                <AntDesign name="arrowup" size={20} color="white" />
+                            </View>
+                            <View>
+                                <Text style={styles.label}>ganhos</Text>
+                                <Text style={[styles.cashLabel, { color: `rgba(${Colors.greenRGB}, .65)` }]}>
+                                    {doneIncomesTotalAmount}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+
+                        {/* Outcomes Total */}
+                        <TouchableOpacity style={styles.entryCard}>
+                            <View style={[styles.entryIcon, { backgroundColor: `rgba(${Colors.redRGB}, .65)` }]}>
+                                <AntDesign name="arrowdown" size={20} color="white" />
+                            </View>
+                            <View>
+                                <Text style={styles.label}>despesas</Text>
+                                <Text style={[styles.cashLabel, { color: `rgba(${Colors.redRGB}, .65)` }]}>
                                     {doneOutcomesTotalAmount}
                                 </Text>
                             </View>
