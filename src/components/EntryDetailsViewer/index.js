@@ -16,7 +16,7 @@ import {
 } from '@expo/vector-icons';
 
 import { Colors } from "../../constants";
-import { getDayMonthYearFormat } from "../../utils";
+import { getDayMonthYearFormat, formatMoney } from "../../utils";
 
 export default function AddNewEntry({ show, close, isIncome, entry, markEntryAsDone, edit }) {
 
@@ -91,7 +91,7 @@ export default function AddNewEntry({ show, close, isIncome, entry, markEntryAsD
                                 <MaterialIcons style={[styles.detailIcon, { color: `rgb(${mainColor})`}]} name="attach-money" size={20} />
                                 <Text style={styles.detailLabel}>Montante</Text>
                             </View>
-                            <Text style={[styles.detailValue, { color: `rgb(${mainColor})`, fontSize: 18 }]}>{amount}</Text>
+                            <Text style={[styles.detailValue, { color: `rgb(${mainColor})`, fontSize: 18 }]}>{formatMoney(amount)} kz</Text>
                         </View>
 
                         <View style={styles.detail}>

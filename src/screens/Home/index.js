@@ -8,7 +8,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import MonthYearPicker from "../../components/MonthYearPicker";
 
 import { Colors, monthsLabel } from "../../constants";
-import { calcTotalAmount, getSeparatedIncomes } from "../../utils";
+import { calcTotalAmount, getSeparatedIncomes, formatMoney } from "../../utils";
 import styles from "./styles";
 
 
@@ -53,7 +53,7 @@ export default function HomeScreen() {
                     <View style={{ justifyContent: "center", alignItems: "center" }}>
                         <Text style={styles.label}>Rendimento Atual</Text>
                         <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRGB})`, fontSize: 22 }]}>
-                            {doneIncomesTotalAmount - doneOutcomesTotalAmount}
+                            {formatMoney(doneIncomesTotalAmount - doneOutcomesTotalAmount)} kz
                         </Text>
                     </View>
 
@@ -67,7 +67,7 @@ export default function HomeScreen() {
                             <View>
                                 <Text style={styles.label}>ganhos</Text>
                                 <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRGB})` }]}>
-                                    {doneIncomesTotalAmount}
+                                    {formatMoney(doneIncomesTotalAmount)} kz
                                 </Text>
                             </View>
                         </TouchableOpacity>
@@ -80,7 +80,7 @@ export default function HomeScreen() {
                             <View>
                                 <Text style={styles.label}>despesas</Text>
                                 <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>
-                                    {doneOutcomesTotalAmount}
+                                    {formatMoney(doneOutcomesTotalAmount)} kz
                                 </Text>
                             </View>
                         </TouchableOpacity>
@@ -100,7 +100,7 @@ export default function HomeScreen() {
                             <View>
                                 <Text style={styles.label}>ganhos</Text>
                                 <Text style={[styles.cashLabel, { color: `rgba(${Colors.greenRGB}, .65)` }]}>
-                                    {notDoneIncomesTotalAmount}
+                                    {formatMoney(notDoneIncomesTotalAmount)} kz
                                 </Text>
                             </View>
                         </TouchableOpacity>
@@ -113,7 +113,7 @@ export default function HomeScreen() {
                             <View>
                                 <Text style={styles.label}>despesas</Text>
                                 <Text style={[styles.cashLabel, { color: `rgba(${Colors.redRGB}, .65)` }]}>
-                                    {notDoneOutcomesTotalAmount}
+                                    {formatMoney(notDoneOutcomesTotalAmount)} kz
                                 </Text>
                             </View>
                         </TouchableOpacity>

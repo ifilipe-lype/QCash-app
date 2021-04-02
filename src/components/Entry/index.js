@@ -5,7 +5,7 @@ import styles from "./styles";
 
 import { AntDesign, Entypo } from '@expo/vector-icons';
 
-import { getWeekDayHourFormat, maxLengthOrDots } from "../../utils";
+import { getWeekDayHourFormat, maxLengthOrDots, formatMoney } from "../../utils";
 
 export default function Entry({ data, isIncome, onPress }) {
     const {
@@ -25,7 +25,7 @@ export default function Entry({ data, isIncome, onPress }) {
                 <Text style={styles.description}>{descriptionFormated}</Text>
             </View>
             <View style={styles.footer}>
-                <Text style={styles.amount(isIncome)}>{amount}</Text>
+                <Text style={styles.amount(isIncome)}>{formatMoney(amount)} kz</Text>
                 {
                     done ? (
                         <AntDesign name="checkcircle" size={14} style={styles.doneIcon} />
