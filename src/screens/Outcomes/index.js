@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import EntriesSharedScreen from "../../components/EntriesSharedScreen";
 
 import { addOutcome, makeOutcomeDone, updateOutcome, deleteOutcome } from "../../store/reducers/outcomes";
-import { addEntryToSheet, makeEntryDone } from "../../store/reducers/sheets";
+import { addEntryToSheet, makeEntryDone, updateEntry } from "../../store/reducers/sheets";
 
-export default function IncomeScreen() {
+export default function OutcomeScreen() {
 
     const dispatch = useDispatch();
 
@@ -23,8 +23,8 @@ export default function IncomeScreen() {
         dispatch(makeEntryDone({ entry }));
     }
 
-    function updateEntry(entry){
-        dispatch(updateOutcome(entry));
+    function updateEntryHelper(entry){
+        dispatch(updateEntry({ entry }));
     }
 
     function deleteEntry(entry){
@@ -37,7 +37,7 @@ export default function IncomeScreen() {
             title={"Despesas de Março, 2021"}
             saveEntry={saveEntry}
             markEntryAsDone={markEntryAsDone}
-            updateEntry={updateEntry}
+            updateEntry={updateEntryHelper}
             deleteEntry={deleteEntry}
         />
     )
