@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import EntriesSharedScreen from "../../components/EntriesSharedScreen";
 
 import { addOutcome, makeOutcomeDone, updateOutcome, deleteOutcome } from "../../store/reducers/outcomes";
-import { addEntryToSheet, makeEntryDone, updateEntry } from "../../store/reducers/sheets";
+import { addEntryToSheet, makeEntryDone, updateEntry, deleteEntry } from "../../store/reducers/sheets";
 
 export default function OutcomeScreen() {
 
@@ -27,8 +27,8 @@ export default function OutcomeScreen() {
         dispatch(updateEntry({ entry }));
     }
 
-    function deleteEntry(entry){
-        dispatch(deleteOutcome(entry))
+    function deleteEntryHelper(entry){
+        dispatch(deleteEntry({ entry }));
     }
 
     return (
@@ -38,7 +38,7 @@ export default function OutcomeScreen() {
             saveEntry={saveEntry}
             markEntryAsDone={markEntryAsDone}
             updateEntry={updateEntryHelper}
-            deleteEntry={deleteEntry}
+            deleteEntry={deleteEntryHelper}
         />
     )
 }
