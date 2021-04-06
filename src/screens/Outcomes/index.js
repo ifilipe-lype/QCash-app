@@ -12,7 +12,7 @@ export default function OutcomeScreen() {
 
     const { active, sheets } = useSelector(store => store.monthlySheets)
 
-    const outcomes = sheets[active].outcomes;
+    const outcomes = sheets[active] ? sheets[active].outcomes : [];
 
     function saveEntry(entry){
         dispatch(addEntryToSheet({ entry }));

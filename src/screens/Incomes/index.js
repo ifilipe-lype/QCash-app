@@ -12,7 +12,7 @@ export default function IncomeScreen() {
 
     const { active, sheets } = useSelector(store => store.monthlySheets)
 
-    const incomes = sheets[active].incomes;
+    const incomes = sheets[active] ? sheets[active].incomes : [];
 
     function saveEntry(entry){
         dispatch(addEntryToSheet({ isIncome: true, entry }));
