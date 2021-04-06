@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 import EntriesSharedScreen from "../../components/EntriesSharedScreen";
 
-import { addIncome, makeIncomeDone, updateIncome, deleteIncome } from "../../store/reducers/incomes";
 import { addEntryToSheet, makeEntryDone, updateEntry, deleteEntry } from "../../store/reducers/sheets";
 
 export default function IncomeScreen() {
