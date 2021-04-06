@@ -10,7 +10,7 @@ export default function IncomeScreen() {
 
     const dispatch = useDispatch();
 
-    const incomes = useSelector(store => store.incomes);
+    const incomes = useSelector(store => store.monthlySheets.active.incomes);
 
     function saveEntry(entry){
         dispatch(addIncome(entry));
