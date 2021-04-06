@@ -5,15 +5,18 @@ import { useSelector, useDispatch } from "react-redux";
 import EntriesSharedScreen from "../../components/EntriesSharedScreen";
 
 import { addOutcome, makeOutcomeDone, updateOutcome, deleteOutcome } from "../../store/reducers/outcomes";
+import { addEntryToSheet } from "../../store/reducers/sheets";
 
 export default function IncomeScreen() {
 
     const dispatch = useDispatch();
 
-    const outcomes = useSelector(store => store.monthlySheets.active.outcomes);
+    const { active, sheets } = useSelector(store => store.monthlySheets)
+
+    const outcomes = sheets[active].outcomes;
 
     function saveEntry(entry){
-        dispatch(addOutcome(entry));
+        dispatch(addEntryToSheet({ entry }));
     }
 
     function markEntryAsDone(entry){
