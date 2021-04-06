@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import EntriesSharedScreen from "../../components/EntriesSharedScreen";
 
 import { addIncome, makeIncomeDone, updateIncome, deleteIncome } from "../../store/reducers/incomes";
+import { addEntryToSheet } from "../../store/reducers/sheets";
 
 export default function IncomeScreen() {
 
@@ -15,7 +16,7 @@ export default function IncomeScreen() {
     const incomes = sheets[active].incomes;
 
     function saveEntry(entry){
-        dispatch(addIncome(entry));
+        dispatch(addEntryToSheet({ isIncome: true, entry }));
     }
 
     function markEntryAsDone(entry){
