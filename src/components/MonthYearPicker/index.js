@@ -28,7 +28,7 @@ export default function MonthYearPicker({ showPicker, closePicker, activeMonth, 
     }
 
     return (
-        <Modal visible={showPicker} transparent >
+        <Modal visible={showPicker} transparent onRequestClose={closePicker}>
             <View style={styles.container}>
             {/* Backdrop */}
             <TouchableOpacity onPress={closePicker} style={styles.backdrop}></TouchableOpacity>
