@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { addActiveSheet, setActiveSheetByDate } from "../../store/reducers/sheets";
 
 import { AntDesign } from '@expo/vector-icons';
 import { View, Text, TouchableOpacity } from "react-native";
@@ -13,12 +15,13 @@ import styles from "./styles";
 
 
 export default function HomeScreen() {
+    const d = new Date();
+    const dispatch = useDispatch();
 
-    const incomes = useSelector(store => store.incomes);
-    const outcomes = useSelector(store => store.outcomes);
+    const { active, sheets } = useSelector(store => store.monthlySheets);
 
-    const [doneIncomes, notDoneIncomes] = getSeparatedIncomes(incomes);
-    const [doneOutcomes, notDoneOutcomes] = getSeparatedIncomes(outcomes);
+    const [doneIncomes, notDoneIncomes] = getSeparatedIncomes(active ? active.incomes: []);
+    const [doneOutcomes, notDoneOutcomes] = getSeparatedIncomes(active ? active.outcomes : []);
 
     const doneIncomesTotalAmount = calcTotalAmount(doneIncomes);
     const notDoneIncomesTotalAmount = calcTotalAmount(notDoneIncomes);
@@ -27,15 +30,36 @@ export default function HomeScreen() {
     const notDoneOutcomesTotalAmount = calcTotalAmount(notDoneOutcomes);
 
     const [showDatePicker, setShowDatePicker] = useState(false);
-    const [activeMonth, setActiveMonth] = useState(2);
-    const [activeYear, setActiveYear] = useState(2021);
+    const [activeMonth, setActiveMonth] = useState(d.getMonth());
+    const [activeYear, setActiveYear] = useState(d.getFullYear());
 
     function closePicker() {
         setShowDatePicker(false);
     }
 
+    console.log(active, sheets)
+
     useEffect(() => {
-    }, [])
+        if (!active) {
+            dispatch(setActiveSheetByDate({ month: activeMonth, year: activeYear}));
+        }
+    }, []);
+
+    useEffect(() => {
+        const dateLabel = `${activeMonth}-${activeYear}`
+        if(sheets[dateLabel]){
+            dispatch(setActiveSheetByDate({ month: activeMonth, year: activeYear}));
+        } else {
+            dispatch(
+                addActiveSheet({
+                    month: activeMonth,
+                    year: activeYear,
+                    incomes: [],
+                    outcomes: []
+                })
+            );
+        }
+    }, [activeMonth, activeYear])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -121,14 +145,18 @@ export default function HomeScreen() {
                 </View>
             </View>
 
-            <MonthYearPicker
-                closePicker={closePicker}
-                showPicker={showDatePicker}
-                activeMonth={activeMonth}
-                setActiveMonth={setActiveMonth}
-                activeYear={activeYear}
-                setActiveYear={setActiveYear}
-            />
+            {
+                showDatePicker && (
+                    <MonthYearPicker
+                        closePicker={closePicker}
+                        showPicker={showDatePicker}
+                        activeMonth={activeMonth}
+                        setActiveMonth={setActiveMonth}
+                        activeYear={activeYear}
+                        setActiveYear={setActiveYear}
+                    />
+                )
+            }
         </SafeAreaView>
     )
 }
