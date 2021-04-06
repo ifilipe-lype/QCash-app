@@ -20,8 +20,8 @@ export default function HomeScreen() {
 
     const { active, sheets } = useSelector(store => store.monthlySheets);
 
-    const [doneIncomes, notDoneIncomes] = getSeparatedIncomes(active ? active.incomes: []);
-    const [doneOutcomes, notDoneOutcomes] = getSeparatedIncomes(active ? active.outcomes : []);
+    const [doneIncomes, notDoneIncomes] = getSeparatedIncomes(sheets[active] ? sheets[active].incomes: []);
+    const [doneOutcomes, notDoneOutcomes] = getSeparatedIncomes(sheets[active] ? sheets[active].outcomes : []);
 
     const doneIncomesTotalAmount = calcTotalAmount(doneIncomes);
     const notDoneIncomesTotalAmount = calcTotalAmount(notDoneIncomes);
@@ -40,7 +40,7 @@ export default function HomeScreen() {
     console.log(active, sheets)
 
     useEffect(() => {
-        if (!active) {
+        if (!sheets[active]) {
             dispatch(setActiveSheetByDate({ month: activeMonth, year: activeYear}));
         }
     }, []);

@@ -30,11 +30,26 @@ const sheetsReducer = createSlice({
         },
         setActiveSheetByDate: (state, { payload }) => {
             const { month, year } = payload;
-            state.active = state.sheets[`${month}-${year}`];
+            state.active = `${month}-${year}`;
+        },
+        // CRUD OPERATIONS
+        addEntryToSheet: (state, { payload }) => {
+            const entry = { id: generateId(), ...payload.entry };
+            const { month, year } = state.active;
+
+            if(payload.isIncome){
+                state.active.incomes.push(entry);
+            } else {
+                state.active.outcomes.push(entry);
+            }
         }
     }
 });
 
-export const { addActiveSheet, setActiveSheetByDate } = sheetsReducer.actions;
+export const {
+    addActiveSheet,
+    setActiveSheetByDate,
+    addEntryToSheet
+} = sheetsReducer.actions;
 
 export default sheetsReducer.reducer;
