@@ -8,7 +8,8 @@ import EntryEditor from "../../components/EntryEditor";
 import EntryDetailsViewer from "../../components/EntryDetailsViewer";
 
 export default function EntriesSharedScreen({
-    title,
+    year,
+    month,
     isIncome,
     entries,
     saveEntry,
@@ -39,7 +40,8 @@ export default function EntriesSharedScreen({
         }}>
             <EntriesScreenHeader
                 isIncome={isIncome}
-                title={title}
+                year={year}
+                month={month}
                 setShowAddEntryForm={setShowAddEntryForm}
             />
 

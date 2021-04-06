@@ -1,3 +1,6 @@
+import 'react-native-get-random-values';
+import { v4 as uuid } from 'uuid';
+
 import { daysOfWeek, monthsLabel } from "../constants";
 
 export function getWeekDayHourFormat(dateInput){
@@ -48,4 +51,8 @@ export function getSeparatedIncomes(list){
 
 export function formatMoney(amount){
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+export function generateId(){
+    return uuid();
 }

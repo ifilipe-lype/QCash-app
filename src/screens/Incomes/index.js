@@ -4,39 +4,42 @@ import { useSelector, useDispatch } from "react-redux";
 
 import EntriesSharedScreen from "../../components/EntriesSharedScreen";
 
-import { addIncome, makeIncomeDone, updateIncome, deleteIncome } from "../../store/reducers/incomes";
+import { addEntryToSheet, makeEntryDone, updateEntry, deleteEntry } from "../../store/reducers/sheets";
 
 export default function IncomeScreen() {
 
     const dispatch = useDispatch();
 
-    const incomes = useSelector(store => store.incomes);
+    const { active, sheets } = useSelector(store => store.monthlySheets)
+
+    const incomes = sheets[active] ? sheets[active].incomes : [];
 
     function saveEntry(entry){
-        dispatch(addIncome(entry));
+        dispatch(addEntryToSheet({ isIncome: true, entry }));
     }
 
     function markEntryAsDone(entry){
-        dispatch(makeIncomeDone(entry));
+        dispatch(makeEntryDone({ isIncome: true, entry }));
     }
 
-    function updateEntry(entry){
-        dispatch(updateIncome(entry));
+    function updateEntryHelper(entry){
+        dispatch(updateEntry({ isIncome: true, entry }));
     }
 
-    function deleteEntry(entry){
-        dispatch(deleteIncome(entry));
+    function deleteEntryHelper(entry){
+        dispatch(deleteEntry({ isIncome: true, entry }));
     }
 
     return (
         <EntriesSharedScreen
             isIncome
             entries={incomes}
-            title={"Ganhos de Março, 2021"}
+            month={active.split("-")[0]}
+            year={active.split("-")[1]}
             saveEntry={saveEntry}
             markEntryAsDone={markEntryAsDone}
-            updateEntry={updateEntry}
-            deleteEntry={deleteEntry}
+            updateEntry={updateEntryHelper}
+            deleteEntry={deleteEntryHelper}
         />
     )
 }

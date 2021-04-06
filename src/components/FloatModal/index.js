@@ -7,7 +7,7 @@ import styles from "./styles";
 export default function FloatModal({ show, close, children }) {
 
     return (
-        <Modal visible={show} transparent >
+        <Modal visible={show} transparent onRequestClose={close} >
             <View style={styles.container}>
                 <TouchableOpacity onPress={close} style={styles.backdrop}></TouchableOpacity>
                 <View style={styles.formBody}>
