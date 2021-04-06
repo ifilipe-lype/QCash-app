@@ -9,7 +9,7 @@ import sheetsReducer from "./sheets";
 const rootReducer = combineReducers({
     outcomes: outcomesReducer,
     incomes: incomesReducer,
-    sheets: sheetsReducer
+    monthlySheets: sheetsReducer
 });
 
 const persistConfig = {
