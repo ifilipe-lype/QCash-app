@@ -37,8 +37,6 @@ export default function HomeScreen() {
         setShowDatePicker(false);
     }
 
-    console.log(active, sheets)
-
     useEffect(() => {
         if (!sheets[active]) {
             dispatch(setActiveSheetByDate({ month: activeMonth, year: activeYear}));
