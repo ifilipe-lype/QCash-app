@@ -41,6 +41,29 @@ const sheetsReducer = createSlice({
             } else {
                 state.sheets[state.active].outcomes.push(entry);
             }
+        },
+        makeEntryDone: (state, { payload }) => {
+            const { id } = payload.entry;
+            
+            for(let entry of state.sheets[state.active][payload.isIncome ? "incomes" : "outcomes"]){
+                if(entry.id === id){
+                    entry.done = true;
+                    break;
+                }
+            }
+        },
+        updateEntry: (state, { payload }) => {
+            const { id } = payload.entry;
+
+            for(let entry of state.sheets[state.active][payload.isIncome ? "incomes" : "outcomes"]){
+                if(entry.id === id){
+                    entry.description = payload.entry.description;
+                    entry.amount = payload.entry.amount;
+                    entry.done = payload.entry.done;
+
+                    break;
+                }
+            }
         }
     }
 });
@@ -48,7 +71,9 @@ const sheetsReducer = createSlice({
 export const {
     addActiveSheet,
     setActiveSheetByDate,
-    addEntryToSheet
+    addEntryToSheet,
+    makeEntryDone,
+    updateEntry
 } = sheetsReducer.actions;
 
 export default sheetsReducer.reducer;
