@@ -35,12 +35,11 @@ const sheetsReducer = createSlice({
         // CRUD OPERATIONS
         addEntryToSheet: (state, { payload }) => {
             const entry = { id: generateId(), ...payload.entry };
-            const { month, year } = state.active;
 
             if(payload.isIncome){
-                state.active.incomes.push(entry);
+                state.sheets[state.active].incomes.push(entry);
             } else {
-                state.active.outcomes.push(entry);
+                state.sheets[state.active].outcomes.push(entry);
             }
         }
     }
