@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 import EntriesSharedScreen from "../../components/EntriesSharedScreen";
 
-import { addOutcome, makeOutcomeDone, updateOutcome, deleteOutcome } from "../../store/reducers/outcomes";
 import { addEntryToSheet, makeEntryDone, updateEntry, deleteEntry } from "../../store/reducers/sheets";
 
 export default function OutcomeScreen() {
