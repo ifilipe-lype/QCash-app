@@ -36,7 +36,7 @@ const sheetsReducer = createSlice({
         addEntryToSheet: (state, { payload }) => {
             const entry = { id: generateId(), ...payload.entry };
 
-            if(payload.isIncome){
+            if (payload.isIncome) {
                 state.sheets[state.active].incomes.push(entry);
             } else {
                 state.sheets[state.active].outcomes.push(entry);
@@ -44,9 +44,9 @@ const sheetsReducer = createSlice({
         },
         makeEntryDone: (state, { payload }) => {
             const { id } = payload.entry;
-            
-            for(let entry of state.sheets[state.active][payload.isIncome ? "incomes" : "outcomes"]){
-                if(entry.id === id){
+
+            for (let entry of state.sheets[state.active][payload.isIncome ? "incomes" : "outcomes"]) {
+                if (entry.id === id) {
                     entry.done = true;
                     break;
                 }
@@ -55,8 +55,8 @@ const sheetsReducer = createSlice({
         updateEntry: (state, { payload }) => {
             const { id } = payload.entry;
 
-            for(let entry of state.sheets[state.active][payload.isIncome ? "incomes" : "outcomes"]){
-                if(entry.id === id){
+            for (let entry of state.sheets[state.active][payload.isIncome ? "incomes" : "outcomes"]) {
+                if (entry.id === id) {
                     entry.description = payload.entry.description;
                     entry.amount = payload.entry.amount;
                     entry.done = payload.entry.done;
@@ -64,6 +64,13 @@ const sheetsReducer = createSlice({
                     break;
                 }
             }
+        },
+        deleteEntry: (state, { payload }) => {
+            const type = payload.isIncome ? "incomes" : "outcomes";
+            let activeSheet = state.sheets[state.active];
+
+            const entryIndexToRemove = activeSheet[type].findIndex(entry => entry.id === payload.id);
+            activeSheet[type].splice(entryIndexToRemove, 1);
         }
     }
 });
@@ -73,7 +80,8 @@ export const {
     setActiveSheetByDate,
     addEntryToSheet,
     makeEntryDone,
-    updateEntry
+    updateEntry,
+    deleteEntry
 } = sheetsReducer.actions;
 
 export default sheetsReducer.reducer;
