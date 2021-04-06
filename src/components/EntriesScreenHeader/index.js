@@ -3,12 +3,12 @@ import { View, Text, TouchableOpacity } from "react-native";
 
 import { Entypo, Feather } from '@expo/vector-icons';
 
-import { Colors } from "../../constants";
+import { Colors, monthsLabel } from "../../constants";
 
 import styles from "./styles";
 
-export default function EntriesScreenHeader({ isIncome ,title, setShowAddEntryForm }) {
-
+export default function EntriesScreenHeader({ isIncome, month, year, setShowAddEntryForm }) {
+    const title = `${isIncome ? "Ganhos" : "Despesas"} de ${monthsLabel[month]}, ${year}`;
     return (
         <View style={styles.header}>
             <Text style={styles.screenLabel}>{title}</Text>
