@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
+import { useDispatch, useSelector } from "react-redux";
 
 import { View, Text, TouchableOpacity, Modal } from "react-native";
 
 import styles from "./styles";
 import { Colors, monthsLabel } from "../../constants";
 
-export default function MonthYearPicker({ showPicker, closePicker, activeMonth, setActiveMonth, setActiveYear, activeYear }) {
+export default function MonthYearPicker({ showPicker, closePicker, activeYear, activeMonth, setActiveMonth, setActiveYear }) {
 
-    const [selectedYear, setSelectedYear] = useState(activeYear);
-    const [selectedMonth, setSelectedMonth] = useState(activeMonth);
-
-    
+    const [selectedYear, setSelectedYear] = useState(+activeYear);
+    const [selectedMonth, setSelectedMonth] = useState(+activeMonth);
 
     function seleteCurrentDate(){
         const curDate = new Date();
