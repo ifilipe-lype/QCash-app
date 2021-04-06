@@ -4,10 +4,12 @@ import { persistReducer } from "redux-persist"
 
 import outcomesReducer from "./outcomes";
 import incomesReducer from "./incomes";
+import sheetsReducer from "./sheets";
 
 const rootReducer = combineReducers({
     outcomes: outcomesReducer,
-    incomes: incomesReducer
+    incomes: incomesReducer,
+    sheets: sheetsReducer
 });
 
 const persistConfig = {
