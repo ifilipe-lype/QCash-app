@@ -20,7 +20,7 @@ export default function HomeScreen() {
 
     const { active, sheets } = useSelector(store => store.monthlySheets);
 
-    const [doneIncomes, notDoneIncomes] = getSeparatedIncomes(sheets[active] ? sheets[active].incomes: []);
+    const [doneIncomes, notDoneIncomes] = getSeparatedIncomes(sheets[active] ? sheets[active].incomes : []);
     const [doneOutcomes, notDoneOutcomes] = getSeparatedIncomes(sheets[active] ? sheets[active].outcomes : []);
 
     const doneIncomesTotalAmount = calcTotalAmount(doneIncomes);
@@ -39,14 +39,14 @@ export default function HomeScreen() {
 
     useEffect(() => {
         if (!sheets[active]) {
-            dispatch(setActiveSheetByDate({ month: activeMonth, year: activeYear}));
+            dispatch(setActiveSheetByDate({ month: activeMonth, year: activeYear }));
         }
     }, []);
 
     useEffect(() => {
         const dateLabel = `${activeMonth}-${activeYear}`
-        if(sheets[dateLabel]){
-            dispatch(setActiveSheetByDate({ month: activeMonth, year: activeYear}));
+        if (sheets[dateLabel]) {
+            dispatch(setActiveSheetByDate({ month: activeMonth, year: activeYear }));
         } else {
             dispatch(
                 addActiveSheet({
@@ -61,55 +61,55 @@ export default function HomeScreen() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.statusCard}>
-                <View style={styles.statusCardTopShadowHider}></View>
+            <View style={{ overflow: "hidden", paddingBottom: 4 }}>
+                <View style={styles.statusCard}>
+                    {/* Date Selector */}
+                    <TouchableOpacity style={styles.datePickerBtn} onPress={() => setShowDatePicker(!showDatePicker)}>
+                        <Text style={styles.datePickerBtnLabel}>{monthsLabel[activeMonth]}, {activeYear}</Text>
+                        <AntDesign style={styles.datePickerBtnIcon} name="down" size={16} />
+                    </TouchableOpacity>
 
-                {/* Date Selector */}
-                <TouchableOpacity style={styles.datePickerBtn} onPress={() => setShowDatePicker(!showDatePicker)}>
-                    <Text style={styles.datePickerBtnLabel}>{monthsLabel[activeMonth]}, {activeYear}</Text>
-                    <AntDesign style={styles.datePickerBtnIcon} name="down" size={16} />
-                </TouchableOpacity>
-
-                <View style={{ width: "100%" }}>
-                    {/* Total Month Gain */}
-                    <View style={{ justifyContent: "center", alignItems: "center" }}>
-                        <Text style={styles.label}>Rendimento Atual</Text>
-                        <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRGB})`, fontSize: 22 }]}>
-                            {formatMoney(doneIncomesTotalAmount - doneOutcomesTotalAmount)} kz
+                    <View style={{ width: "100%" }}>
+                        {/* Total Month Gain */}
+                        <View style={{ justifyContent: "center", alignItems: "center" }}>
+                            <Text style={styles.label}>Rendimento Atual</Text>
+                            <Text style={[styles.cashLabel, { color: `rgb(${Colors.blueRGB})`, fontSize: 22 }]}>
+                                {formatMoney(doneIncomesTotalAmount - doneOutcomesTotalAmount)} kz
                         </Text>
-                    </View>
+                        </View>
 
-                    {/* Incomes and Outcomes Totals */}
-                    <View style={styles.entriesResults}>
-                        {/* Incomes Total */}
-                        <TouchableOpacity style={styles.entryCard}>
-                            <View style={styles.entryIcon}>
-                                <AntDesign name="arrowup" size={20} color="white" />
-                            </View>
-                            <View>
-                                <Text style={styles.label}>ganhos</Text>
-                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRGB})` }]}>
-                                    {formatMoney(doneIncomesTotalAmount)} kz
+                        {/* Incomes and Outcomes Totals */}
+                        <View style={styles.entriesResults}>
+                            {/* Incomes Total */}
+                            <TouchableOpacity style={styles.entryCard}>
+                                <View style={styles.entryIcon}>
+                                    <AntDesign name="arrowup" size={20} color="white" />
+                                </View>
+                                <View>
+                                    <Text style={styles.label}>ganhos</Text>
+                                    <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRGB})` }]}>
+                                        {formatMoney(doneIncomesTotalAmount)} kz
                                 </Text>
-                            </View>
-                        </TouchableOpacity>
+                                </View>
+                            </TouchableOpacity>
 
-                        {/* Outcomes Total */}
-                        <TouchableOpacity style={styles.entryCard}>
-                            <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRGB})` }]}>
-                                <AntDesign name="arrowdown" size={20} color="white" />
-                            </View>
-                            <View>
-                                <Text style={styles.label}>despesas</Text>
-                                <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>
-                                    {formatMoney(doneOutcomesTotalAmount)} kz
+                            {/* Outcomes Total */}
+                            <TouchableOpacity style={styles.entryCard}>
+                                <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRGB})` }]}>
+                                    <AntDesign name="arrowdown" size={20} color="white" />
+                                </View>
+                                <View>
+                                    <Text style={styles.label}>despesas</Text>
+                                    <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>
+                                        {formatMoney(doneOutcomesTotalAmount)} kz
                                 </Text>
-                            </View>
-                        </TouchableOpacity>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
-            </View>
 
+            </View>
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>Por efetuar</Text>
                 <View style={styles.sectionBody}>

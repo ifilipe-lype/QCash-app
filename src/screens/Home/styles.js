@@ -7,13 +7,6 @@ export default StyleSheet.create({
         paddingTop: 2,
         backgroundColor: `#f7f7f7`,
     },
-    statusCardTopShadowHider: {
-        backgroundColor: "white",
-        width: "100%",
-        height: 2,
-        position: "absolute",
-        top: -2
-    },
     statusCard: {
         position: "relative",
         alignItems: "center",
@@ -85,7 +78,6 @@ export default StyleSheet.create({
         borderRadius: 12,
         backgroundColor: "white",
         alignItems: "center",
-        backgroundColor: "white",
         padding: 12,
         shadowColor: "#000",
         shadowOffset: {
