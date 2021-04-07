@@ -38,7 +38,7 @@ export default StyleSheet.create({
     },
     label: {
         fontSize: 14,
-        color: "rgba(0,0,0, .7)"
+        color: "rgba(0,0,0, .55)"
     },
     cashLabel: {
         fontSize: 18,
