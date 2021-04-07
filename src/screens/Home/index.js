@@ -86,7 +86,7 @@ export default function HomeScreen() {
                                     <AntDesign name="arrowup" size={20} color="white" />
                                 </View>
                                 <View>
-                                    <Text style={styles.label}>ganhos</Text>
+                                    <Text style={styles.label}>Ganhos</Text>
                                     <Text style={[styles.cashLabel, { color: `rgb(${Colors.greenRGB})` }]}>
                                         {formatMoney(doneIncomesTotalAmount)} kz
                                 </Text>
@@ -99,7 +99,7 @@ export default function HomeScreen() {
                                     <AntDesign name="arrowdown" size={20} color="white" />
                                 </View>
                                 <View>
-                                    <Text style={styles.label}>despesas</Text>
+                                    <Text style={styles.label}>Despesas</Text>
                                     <Text style={[styles.cashLabel, { color: `rgb(${Colors.redRGB})` }]}>
                                         {formatMoney(doneOutcomesTotalAmount)} kz
                                 </Text>
@@ -120,7 +120,7 @@ export default function HomeScreen() {
                                 <AntDesign name="arrowup" size={20} color="white" />
                             </View>
                             <View>
-                                <Text style={styles.label}>ganhos</Text>
+                                <Text style={styles.label}>Ganhos</Text>
                                 <Text style={[styles.cashLabel, { color: `rgba(${Colors.greenRGB}, .65)` }]}>
                                     {formatMoney(notDoneIncomesTotalAmount)} kz
                                 </Text>
@@ -133,7 +133,7 @@ export default function HomeScreen() {
                                 <AntDesign name="arrowdown" size={20} color="white" />
                             </View>
                             <View>
-                                <Text style={styles.label}>despesas</Text>
+                                <Text style={styles.label}>Despesas</Text>
                                 <Text style={[styles.cashLabel, { color: `rgba(${Colors.redRGB}, .65)` }]}>
                                     {formatMoney(notDoneOutcomesTotalAmount)} kz
                                 </Text>
