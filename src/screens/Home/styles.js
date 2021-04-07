@@ -56,11 +56,11 @@ export default StyleSheet.create({
     },
     datePickerBtnLabel: {
         fontSize: 18,
-        color: `rgb(${Colors.grayDarkRGB})`
+        color: `rgb(0,0,0)`
     },
     datePickerBtnIcon: {
         marginLeft: 6,
-        color: `rgb(${Colors.grayDarkRGB})`
+        color: `rgb(0,0,0)`
     },
     section: {
         paddingHorizontal: 8,
