@@ -33,8 +33,8 @@ export default function OutcomeScreen() {
     return (
         <EntriesSharedScreen
             entries={outcomes}
-            month={active.split("-")[0]}
-            year={active.split("-")[1]}
+            month={active && active.split("-")[0]}
+            year={active && active.split("-")[1]}
             saveEntry={saveEntry}
             markEntryAsDone={markEntryAsDone}
             updateEntry={updateEntryHelper}

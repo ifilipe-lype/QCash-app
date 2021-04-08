@@ -34,8 +34,8 @@ export default function IncomeScreen() {
         <EntriesSharedScreen
             isIncome
             entries={incomes}
-            month={active.split("-")[0]}
-            year={active.split("-")[1]}
+            month={active && active.split("-")[0]}
+            year={active && active.split("-")[1]}
             saveEntry={saveEntry}
             markEntryAsDone={markEntryAsDone}
             updateEntry={updateEntryHelper}
