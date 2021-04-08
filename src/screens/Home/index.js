@@ -14,7 +14,7 @@ import { calcTotalAmount, getSeparatedIncomes, formatMoney } from "../../utils";
 import styles from "./styles";
 
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
     const d = new Date();
     const dispatch = useDispatch();
 
@@ -81,7 +81,9 @@ export default function HomeScreen() {
                         {/* Incomes and Outcomes Totals */}
                         <View style={styles.entriesResults}>
                             {/* Incomes Total */}
-                            <TouchableOpacity style={styles.entryCard}>
+                            <TouchableOpacity style={styles.entryCard}
+                                onPress={() => navigation.navigate("Incomes")}
+                            >
                                 <View style={styles.entryIcon}>
                                     <AntDesign name="arrowup" size={20} color="white" />
                                 </View>
@@ -94,7 +96,9 @@ export default function HomeScreen() {
                             </TouchableOpacity>
 
                             {/* Outcomes Total */}
-                            <TouchableOpacity style={styles.entryCard}>
+                            <TouchableOpacity style={styles.entryCard}
+                                onPress={() => navigation.navigate("Outcomes")}
+                            >
                                 <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRGB})` }]}>
                                     <AntDesign name="arrowdown" size={20} color="white" />
                                 </View>
@@ -115,7 +119,7 @@ export default function HomeScreen() {
                 <View style={styles.sectionBody}>
                     <View style={styles.entriesResults}>
                         {/* Incomes Total */}
-                        <TouchableOpacity style={styles.entryCard}>
+                        <View style={styles.entryCard}>
                             <View style={[styles.entryIcon, { backgroundColor: `rgba(${Colors.greenRGB}, .65)` }]}>
                                 <AntDesign name="arrowup" size={20} color="white" />
                             </View>
@@ -125,10 +129,10 @@ export default function HomeScreen() {
                                     {formatMoney(notDoneIncomesTotalAmount)} kz
                                 </Text>
                             </View>
-                        </TouchableOpacity>
+                        </View>
 
                         {/* Outcomes Total */}
-                        <TouchableOpacity style={styles.entryCard}>
+                        <View style={styles.entryCard}>
                             <View style={[styles.entryIcon, { backgroundColor: `rgba(${Colors.redRGB}, .65)` }]}>
                                 <AntDesign name="arrowdown" size={20} color="white" />
                             </View>
@@ -138,7 +142,7 @@ export default function HomeScreen() {
                                     {formatMoney(notDoneOutcomesTotalAmount)} kz
                                 </Text>
                             </View>
-                        </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
             </View>
