@@ -24,7 +24,7 @@ const sheetsReducer = createSlice({
         addActiveSheet: (state, { payload }) => {
             const { month, year } = payload;
             state.sheets[`${month}-${year}`] = { id: generateId(), ...payload };
-            state.active = payload;
+            state.active = `${month}-${year}`;
         },
         setActiveSheetByDate: (state, { payload }) => {
             const { month, year } = payload;
