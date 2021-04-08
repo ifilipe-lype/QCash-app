@@ -14,7 +14,7 @@ import { calcTotalAmount, getSeparatedIncomes, formatMoney } from "../../utils";
 import styles from "./styles";
 
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
     const d = new Date();
     const dispatch = useDispatch();
 
@@ -81,7 +81,9 @@ export default function HomeScreen() {
                         {/* Incomes and Outcomes Totals */}
                         <View style={styles.entriesResults}>
                             {/* Incomes Total */}
-                            <TouchableOpacity style={styles.entryCard}>
+                            <TouchableOpacity style={styles.entryCard}
+                                onPress={() => navigation.navigate("Incomes")}
+                            >
                                 <View style={styles.entryIcon}>
                                     <AntDesign name="arrowup" size={20} color="white" />
                                 </View>
