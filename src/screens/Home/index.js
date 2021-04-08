@@ -96,7 +96,9 @@ export default function HomeScreen({ navigation }) {
                             </TouchableOpacity>
 
                             {/* Outcomes Total */}
-                            <TouchableOpacity style={styles.entryCard}>
+                            <TouchableOpacity style={styles.entryCard}
+                                onPress={() => navigation.navigate("Outcomes")}
+                            >
                                 <View style={[styles.entryIcon, { backgroundColor: `rgb(${Colors.redRGB})` }]}>
                                     <AntDesign name="arrowdown" size={20} color="white" />
                                 </View>
