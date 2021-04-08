@@ -119,7 +119,7 @@ export default function HomeScreen({ navigation }) {
                 <View style={styles.sectionBody}>
                     <View style={styles.entriesResults}>
                         {/* Incomes Total */}
-                        <TouchableOpacity style={styles.entryCard}>
+                        <View style={styles.entryCard}>
                             <View style={[styles.entryIcon, { backgroundColor: `rgba(${Colors.greenRGB}, .65)` }]}>
                                 <AntDesign name="arrowup" size={20} color="white" />
                             </View>
@@ -129,10 +129,10 @@ export default function HomeScreen({ navigation }) {
                                     {formatMoney(notDoneIncomesTotalAmount)} kz
                                 </Text>
                             </View>
-                        </TouchableOpacity>
+                        </View>
 
                         {/* Outcomes Total */}
-                        <TouchableOpacity style={styles.entryCard}>
+                        <View style={styles.entryCard}>
                             <View style={[styles.entryIcon, { backgroundColor: `rgba(${Colors.redRGB}, .65)` }]}>
                                 <AntDesign name="arrowdown" size={20} color="white" />
                             </View>
@@ -142,7 +142,7 @@ export default function HomeScreen({ navigation }) {
                                     {formatMoney(notDoneOutcomesTotalAmount)} kz
                                 </Text>
                             </View>
-                        </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
             </View>
