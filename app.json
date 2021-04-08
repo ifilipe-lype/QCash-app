@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "QualCash-mobile",
-    "slug": "QualCash-mobile",
+    "name": "Qcash",
+    "slug": "Qcash",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,7 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "como.manekus.qualcashapp"
+      "package": "como.manekus.qcash"
     },
     "web": {
       "favicon": "./assets/favicon.png"
