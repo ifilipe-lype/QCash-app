@@ -139,7 +139,7 @@ export default function EntryEditor({
                     show={showConfirmDeleteDialog}
                     title={`Remover ${isIncome ? "Ganho" : "Despesa"}`}
                     description={`Deseja remover ${isIncome ? "ganho" : "despesa"} ? essa ação não poder ser disfeita.`}
-                    mainColor={`rgb(${mainColor})`}
+                    mainColor={`rgb(${Colors.redRGB})`}
                     cancel={() => setShowConfirmDeleteDialog(false)}
                     confirm={deleteEntryHelper}
                 />
